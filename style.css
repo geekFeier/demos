@@ -1,0 +1,19 @@
+body{background: #B09797;width: 100%; background: url(images/bg.png) no-repeat;background-size: cover; }
+*{font-family: "microsoft yahei";}
+.link{clear: both}
+.tc{text-align: center;color: #F07997;line-height: 80px;}
+.button{float: left;margin:20px 80px; border:2px solid #fff;width: 100px;height: 40px;text-align: center;line-height: 40px;color: #fff;cursor: pointer;position: relative;}
+.line{position: absolute;}
+.top-line{left: -110%;top:-2px; width: 0px;height: 2px;background: #fff;opacity: 0;transition: 0.5s;-moz-transition:0.5s;}
+.bottom-line{right: -110%;bottom:-2px; width: 0px;height: 2px;background: #fff;opacity: 0;transition: 0.5s;-moz-transition:0.5s;}
+.left-line{bottom: -110%;left:-2px; width: 2px;height: 0px;background: #fff;opacity: 0;transition: 0.5s;-moz-transition:0.5s;}
+.right-line{top: -110%;right:-2px; width: 2px;height: 0px;background: #fff;opacity: 0;transition: 0.5s;-moz-transition:0.5s;}
+
+
+.button:hover .top-line{left: 0;top:-2px; width: 100px;height: 2px;background: #fff;opacity:1;transition: 0.5s;}
+.button:hover .bottom-line{right: 0;bottom:-2px; width: 100px;height: 2px;background: #fff;opacity:1;transition:0.5s}
+.button:hover .left-line{bottom: 0;left:-2px; width: 2px;height: 40px;background: #fff;opacity:1;transition:0.5s}
+.button:hover .right-line{top: -0;right:-2px; width: 2px;height: 40px;background: #fff;opacity:1;transition:0.5s}
+
+.tip{position: absolute;padding:6px 10px; height: 67px;background: #FACEE7;text-align: center;opacity: 0;padding:0 15px; line-height:20px;padding-top: 15px; background: url(images/heart.png);background-size: 100% 100%}
+.tip .txt{color: #83C18B;font-weight: bold;} 

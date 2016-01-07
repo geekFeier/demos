@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 button</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <h1 class="tc">我的梦/Dream it possible</h1>
+    <div class="link">
+        <div class="button" date-title = "一直地 一直地 往前走<br/>疯狂的世界">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>You</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "迎着痛 把眼中 所有梦<br/>都交给时间">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>Are</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "想飞 就用心地去飞<br/>谁不经历狼狈">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>The</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "我想我会 忽略失望的灰<br/>拥抱遗憾的美">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>April</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "我的梦说别停留等待">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>Of</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "就让光芒折射泪湿的瞳孔<br/>映出心中最想拥有的彩虹">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>My</span>
+        </div>
+    </div>
+    <div class="link">
+        <div class="button" date-title = "带我奔向那片有你的天空<br/>因为你是我的梦~">
+             <span class="line top-line"></span>
+             <span class="line bottom-line"></span>
+             <span class="line left-line"></span>
+             <span class="line right-line"></span>
+             <span>Eyes</span>
+        </div>
+    </div> 
+    <div class="tip">
+        <span class="txt"></span> 
+    </div>
+    <audio hidden controls="controls"  autoplay="autoplay">
+        <source src="myDream.mp3" type="audio/mp3" />
+    </audio>
+</body>
+</html>
+<script>
+    $(function(){
+        $(".link .button").hover(function(){
+            var title = $(this).attr("date-title");
+            $(".tip .txt").html(title);
+            var pos = $(this).offset().left;
+            var posTop = $(this).offset().top;
+            var dis = ($(".tip").outerWidth() - $(this).outerWidth())/2; 
+            $(".tip").css({"left": pos - dis +"px"}).animate({"opacity":1,"left":pos + 160,"top": posTop - 15},300);
+        },function(){
+            $(".tip").animate({"opacity":0,"left":pos+220});
+        })
+    })
+</script>
