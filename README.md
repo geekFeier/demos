@@ -5,8 +5,12 @@
 4. canvas demo
     * [3D 轮播图](https://geekfeier.github.io/demos/4Canvas/3dbanner)
     * [3D 气球🎈](https://geekfeier.github.io/demos/4Canvas/ball)
-    * [字母喷射](https://geekfeier.github.io/demos/4Canvas/canvasLetters) 
-    * [雨](https://geekfeier.github.io/demos/4Canvas/canvasRain)
+    * [字母喷射](https://geekfeier.github.io/demos/4Canvas/canvasLetters)             
+    * 雨
+        1. [效果1](https://geekfeier.github.io/demos/4Canvas/canvasRain/v1.html) 
+        2. [效果2](https://geekfeier.github.io/demos/4Canvas/canvasRain/v2.html) 
+        3. [效果3](https://geekfeier.github.io/demos/4Canvas/canvasRain/v3.html) 
+        4. [最终版](https://geekfeier.github.io/demos/4Canvas/canvasRain/index.html) 
 5. [有规律的魔方  RegularSquare](https://geekfeier.github.io/demos/5RegularSquare)
 
     ```js
