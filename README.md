@@ -42,8 +42,8 @@
 
 6. [为小晶晶做的照片瀑布流(因为懒没有加loading。。。)](https://geekfeier.github.io/demos/6LittleJing)
 7. [剪切旋转特效](https://geekfeier.github.io/demos/7ClipPath)
-8. [下拉刷新上拉加载](https://geekfeier.github.io/demos/8IscorllPage)
-9. [为了粉丝 官网](https://geekfeier.github.io/demos/9Forfans)
+8. [下拉刷新上拉加载(移动端)](https://geekfeier.github.io/demos/8IscorllPage)
+9. [为了粉丝 官网](https://geekfeier.github.io/demos/9Forfans/html)
 10. [我的梦 Btn效果](https://geekfeier.github.io/demos/10Mydream)
 11. [txunda 第二版](https://geekfeier.github.io/demos/11TxundaV2)
 12. [txunda 第一版](https://geekfeier.github.io/demos/12TxundaV1)
