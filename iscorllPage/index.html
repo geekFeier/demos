@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>价值投资</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css"/>
+	<script src="js/jquery-1.8.0.min.js"></script>
+
+	<!-- 下拉刷新上拉加载功能 开始 -->
+    <link rel="stylesheet" href="iscroll/iscroll.css">
+    <script type="text/javascript" src="iscroll/iscroll.js"></script>
+    <script src="iscroll/common-scroll.js"></script>
+    <!-- 结束 -->
+
+    <script src="http://mockjs.com/dist/mock.js"></script>
+</head>
+<body>
+	<article class="container" id="wrapper">
+		<div id="scroller">
+			<!-- 下拉刷新功能 开始 -->
+			<div id="pullDown">
+				<div class="box-fresh">
+				    <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+				</div>
+			</div>
+			<!-- 结束 -->
+
+			<ul id="thelist" class="value-list clear">
+				
+			</ul>
+
+			<!-- 上拉加载功能 开始 -->
+			<div id="pullUp">
+	            <div class="box-fresh">
+	            	<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载...</span>
+	            </div>
+	        </div>
+	        <!-- 结束 -->
+		</div>
+	</article>
+</body>
+</html>
+<script>
+	Mock.mock('http://127.0.0.1:8081/jztz/list', {
+		"code": 0,
+		"permissions": "1",
+		"list": [
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+
+		{	"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+
+			{"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+
+		{	"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} ,
+		{
+			"cls_name": 'xxx',
+			"created_time": "--",
+			"secode": [
+			"aaa(003)",
+			"bbb",
+			"ccc"
+			],
+			"range": "bbb%",
+			"downnum": "58",
+			"upnum": "45",
+			"tittle": "jztt",
+			"likenum": "52"
+		} 
+
+		]
+	});
+
+
+	
+	var txts = ''; //所有列表内容
+	function getData(status) {
+		var params = {};
+		switch (status) {
+			case 'refresh': //刷新和第一次请求都是第一页
+			case 'undefined':
+				txts = ''; //刷新是所有列表内容设置为空
+				params = {
+					"pageIndex": "1",
+					"pageSize": "3"
+				}
+				break;
+			case 'nextpage':
+				params = {
+					"pageIndex": (Number(window.localStorage.page) + 1).toString(),
+					"pageSize": "3"
+				}
+				break;
+			default:
+				break;
+		}
+		$.ajax({
+				url: 'http://127.0.0.1:8081/jztz/list',
+				type: 'POST',
+				dataType: 'json',
+				data: params,
+			})
+			.done(function(data) {
+				console.log(data)
+				var lists = data.list;
+				window.localStorage.page = params.pageIndex; //当前是第几页
+				$.each(lists, function(index, el) {
+					var relationList = '';
+					$.each(el.secode, function(index, attr) {
+						relationList += '<span>' + attr + '</span>';
+					});
+					txts += '<li>' + '<div class="value-tit">' + '<p class="note">' + el.cls_name + '</p>' + '<p class="tit">' + el.created_time + '</p>' + '</div>' + '<div class="trend clear">' + '<p class="note">概念涨幅</p> ' + '<p class="note rate-up">' + el.range + '</p>' + '<p class="note">涨</p> ' + '<p class="note rate-up">' + el.upnum + '</p>' + '<p class="note">跌</p> ' + '<p class="note rate-down">' + el.downnum + '</p>' + '</div>' + '<p class="recommend-reason">' + '推荐理由：' + '<span>' + el.tittle + '</span>' + '</p>' + '<div class="relation">' + relationList + '</div>' + '</li>'
+				});
+				$('.value-list').html(txts)
+
+			})
+			.fail(function() {
+				console.log("error");
+			});
+	}
+	getData(); //初始化 获取数据
+
+	// iscroll
+	//下拉刷新事件
+	function pullDownAction() {
+		setTimeout(function() {
+			getData('refresh') //刷新  即重新请求第一页
+			myScroll.refresh();
+		}, 1000);
+	}
+	//上拉加载事件
+	function pullUpAction() {
+		setTimeout(function() {
+			getData('nextpage'); //刷新  即重新请求第一页
+			myScroll.refresh();
+		}, 1000);
+	}
+</script>
+ 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d banner</title>
+</head>
+<style id="css">
+	*{margin: 0; padding: 0; } li{list-style: none; } 
+	.container{position: absolute; width: 800px; height: 360px; margin: auto; left: 0; right: 0; top: 0; bottom: 0; }
+	#pic{ width: 800px; height: 360px;-webkit-perspective: 1500; }
+	#pic li{position: relative; float: left;transform: translateZ(-180px); height: 360px; transform-style: preserve-3d; box-sizing: border-box; transition: 2s }
+	#pic li div{position: absolute;   height: 360px;}
+	#pic li div:first-child{
+		top:-360px ; 
+		transform-origin: bottom; 
+		transform: translateZ(180px) rotateX(90deg);
+		background-image: url('images/1.png');
+	}
+	#pic li div:nth-child(2){
+		top:360px; 
+		transform-origin: top; 
+		transform: translateZ(180px) rotateX(-90deg); 
+		background-image: url('images/2.png');
+	}
+	#pic li div:nth-child(3){
+		transform: translateZ(180px); 
+		background-image: url('images/3.png');
+	}
+	#pic li div:nth-child(4){
+		transform: translateZ(-180px) rotateX(-180deg); /*这个角度的图 调过来 */
+		background-image: url('images/4.png');
+	}
+	/* #pic li:hover{transform: rotateX(180deg); }  */
+	#tab{position: absolute; right: 10px; bottom: 10px; }
+	#tab li{background: #000; width: 20px; height: 20px; line-height: 20px; border-radius: 50%; color: #fff; float: left; text-align: center; margin: 0 2px; font-size: 12px; cursor: pointer; }  
+</style>
+<body>
+	<div class="container">
+		<ul id="pic">
+		
+		</ul>
+		<ul id="tab">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	
+</body>
+<script>
+	play(40)
+	function play(num) {
+		var width = 800 / num,
+			css = document.querySelector('#css'),
+			html = '',
+			liCss = '',
+			divCss = '',
+			zIndexCss = '',
+			z = 0;
+		for (var i = 0; i < num; i++) { 
+			html +=
+				`<li>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</li>`;
+			if(i > num/2){
+				z--;
+				zIndexCss += `#pic li:nth-child(${i+1}){
+							z-index:${z};
+						 }`
+			} 
+			divCss += `
+				#pic li:nth-child(${i+1}) div{
+					background-position:` + -width * (i) + `px;
+				} `;
+
+			liCss += `#pic li:nth-child(${i+1}){transition: 1s `+i*0.02 +`s;}` ;
+
+		}
+
+		var tabli = document.querySelectorAll('#tab li');
+		Array.prototype.forEach.call(tabli,function(el,index,array){
+			el.onclick = function(){
+				css.innerHTML += `#pic li{transform:translateZ(-180px) rotateX(`+ -90*index + `deg)}`; 
+			}
+		});
+
+		document.querySelector('#pic').innerHTML = html;
+		css.innerHTML += `
+			${divCss} ${zIndexCss} ${liCss}
+			#pic li{width: ${width}px;}
+			#pic li div{width: ${width}px;}
+			`  
+
+	}
+</script>
+</html>

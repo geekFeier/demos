@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{background: #000}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+</body>
+</html>
+<script>
+	var can = document.getElementById('canvas')
+	var ctx = can.getContext('2d');
+	var w = can.width = window.innerWidth,
+		h = can.height = window.innerHeight;
+
+	window.onresize = function (argument) {
+		w = can.width = window.innerWidth;
+		h = can.height = window.innerHeight;
+	}	 
+	// ctx.arc(250,250,50,0,Math.PI*2,false);
+	// ctx.fill()//填充
+
+	var y = 0
+	// setInterval(function(){
+	// 	y++;
+	// 	ctx.fillStyle = "rgba(0,0,0,0.05)";
+	// 	ctx.fillRect(0,0,w,h);//重新画 
+	// 	// ctx.clearRact(0,0,w,h)//清空画布
+	// 	ctx.fillStyle = '#33ffff';
+	// 	ctx.fillRect(100,y,2,10)
+	// },1000/60) //一秒更新60次，让定时器跟着电脑刷新屏幕相同，则不会卡顿
+
+	function Drop(){
+
+	}
+	Drop.prototype = {
+		init:function(){
+			this.x = random(0,w);
+			this.y = 0;
+			this.vy = random(4,5);
+			this.l = random(0.8*h,0.9*h);
+			this.r = 1;
+			this.vr = 1;
+			this.a = 1;
+			this.va = 0.96  //透明度的变化系数
+		},
+		draw:function(){
+			if(this.y > this.l){
+				// 绘制圆形
+				ctx.beginPath();
+				ctx.strokeStyle = 'rgba(0,255,255,'+ this.a +')';
+				ctx.arc(this.x,this.y,this.r,0,Math.PI*2,false);
+	  			ctx.stroke();
+			}else{
+				// 绘制矩形
+				ctx.fillStyle = "#33ffff";
+				ctx.fillRect(this.x,this.y,2,10)
+			} 
+			this.update();
+		},
+		update:function(){
+			if(this.y < this.l){
+				this.y += this.vy
+			}else{
+				if(this.a > 0.03){
+					this.r += this.vr;
+					if(this.r > 50){
+						//逐渐变模糊
+						this.a *= this.va;
+					}
+				}else{
+					this.init();
+				}
+			}
+			
+		}
+	}
+	var drop = new Drop();
+	drop.init();
+	setInterval(function(){
+		drop.draw();
+	},1000/60)
+
+	function random(min,max){
+		return Math.random() * (max - min) + min;
+	}
+</script>

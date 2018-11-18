@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>page</title> 
+	<style>
+		body,div,ul,li,input{margin: 0;padding:0;border:0;outline: none;}
+		.fl{float: left;}
+		#page{-moz-user-select:none;margin: 10px;font-size: 14px; width: 613px;height: 100px; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto;} 
+		#page li{list-style: none; display: inline-block; width: 28px; height: 28px; text-align: center; line-height: 28px; cursor: pointer; border: 1px solid pink;  }
+		#page li:hover{border: 1px solid pink; background: pink; color: #fff; } 
+		#page li.active{border: 1px solid pink; background: pink; color: #fff; } 
+		#page li.prev,#page li.next{padding: 0 8px; width:auto; }  
+		.my-page-info{line-height: 30px;padding-left: 10px}
+		.my-page-info input[type=text]{width: 30px;height:28px;margin: 0 5px;border: 1px solid pink; padding:0 10px;text-align: center;}
+		.my-page-info input[type=button]{margin: 0 5px; width: 55px;height:28px;border: 1px solid pink;background: pink;color: #fff;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div id="page"  onselectstart="return false;">
+		<div class="fl">
+			<ul class="my-page">
+				<li class="prev">上一页</li>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li class="next">下一页</li>
+			</ul>
+		</div>	
+		<div class="my-page-info fl">
+			到第 <input type="text"> 页 共<span class="page-all-num">100</span>页 
+			<input type="button" value="确定" class="page-btn">
+			第 <span class="currentPage">1</span> 页
+		</div> 
+	</div>
+</body>
+</html>
+<script src="jquery.3.2.1.min.js"></script>
+<script>
+	$('#page').on('click', '.my-page li', function() {
+		if (!$(this).hasClass('prev') && !$(this).hasClass('next')) {
+			$(this).addClass('active').siblings('li').removeClass('active');
+		} else if ($(this).hasClass('prev')) {
+			//上一页 
+			if ($('.active').text() != $('.my-page li:eq(1)').text()) {
+				$('.active').removeClass('active').prev().addClass('active'); 
+			} else {
+				if ($('.active').text() != 1) {
+					var len = Number($('.my-page li:eq(5)').text());
+					$('.my-page li:eq(1)').removeClass('active');
+					for (var i = 1; i <= 5; i++) {
+						$('.my-page li').eq(i).text(len - (5 - i) - 5);
+					}
+					$('.my-page li:eq(5)').addClass('active');
+				}
+			}
+		} else if ($(this).hasClass('next')) {
+			// 下一页 
+			if ($('.active').text() != $('.my-page li:last').prev().text()) {
+				$('.active').removeClass('active').next().addClass('active'); 
+			} else {
+				var len = Number($('.my-page li:eq(5)').text());
+				$('.my-page li:eq(5)').removeClass('active')
+				for (var i = 1; i <= 5; i++) {
+					$('.my-page li').eq(i).text(i + len);
+				}
+				$('.my-page li:eq(1)').addClass('active')
+			}
+		}
+		var page = $('.active').text();
+		goAjax(page);  
+	});
+	/** 
+	 * [goAjax 选择第n页后进行的操作]
+	 * @YXY
+	 * @DateTime 2017-08-11T13:35:09+0800 
+	 */
+	function goAjax(page) {
+		console.log(page);
+		$('.currentPage').text( page );
+	}
+
+	/**
+	 * [description 跳转指定页数]
+	 * @YXY
+	 * @DateTime 2017-08-11T13:47:41+0800 
+	 */
+	$('#page').on('click', '.page-btn', function(event) {
+		event.preventDefault();
+		
+	});
+</script>

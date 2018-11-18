@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css"> 
+    <link href="./js/select2/select2.min.css" rel="stylesheet" />
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.0.3.min.js"></script>
+    <script src="./js/layer/layer.js"></script>
+    <title>检科院tree|demo</title>
+    <style>
+        .select2{ width: auto !important; display: block; margin: 10px;}
+    </style>
+</head>
+<body>  
+<div id="ediText"> 
+   <div id="box-container"> 
+        <div id="left-box" v-cloak>
+            <p>所有供应商</p> 
+            <select id="supplierSearch">
+                <option> </option> 
+                <option :value="item.supplier_id" v-for="item in startData" v-text="item.supplier_name"></option>  
+            </select>
+            <div class="tree-data" > 
+                 <ul class="ul1" v-for="item1 in dataLast">  
+                     <li> 
+                        <div class="showList" @click="showList($event)"></div> 
+                         <a href="javascript:void(0);" v-if="item1.status == 1" class="selected" :data-id="item1.supplier_id" @click="clickList($event)">{{item1.supplier_name}}</a>
+                         <a href="javascript:void(0);" v-else-if="item1.show" class="partSelected" :data-id="item1.supplier_id" @click="clickList($event)">{{item1.supplier_name}}</a>
+                         <a href="javascript:void(0);" v-else :data-id="item1.supplier_id"  @click="clickList($event)">
+                             {{item1.supplier_name}}
+                         </a>  
+                         <ul class="ul2" v-for="item2 in item1.cateData">
+                            <li>
+                                <div class="showList" @click="showList($event)"></div>
+                                <a href="javascript:void(0);" v-if="item2.status == 1" class="selected" :data-id="item2.cate_id" @click="clickList($event)">{{item2.cate_name}}</a>
+                                <a href="javascript:void(0);" v-else-if="item2.show" class="partSelected" :data-id="item2.cate_id" @click="clickList($event)">{{item2.cate_name}}</a>
+                                <a href="javascript:void(0);" v-else :data-id="item2.cate_id" @click="clickList($event)">{{item2.cate_name}}</a>
+                                
+                                <ul class="ul3" v-for="item3 in item2.cateData">
+                                    <li>
+                                        <a href="javascript:void(0);" v-if="item3.status == 1" class="selected" :data-id="item3.brand_id" @click="clickList($event)">{{item3.brand_name}}
+                                        </a>
+                                        <a href="javascript:void(0);" v-else :data-id="item3.brand_id" @click="clickList($event)">{{item3.brand_name}}
+                                        </a> 
+                                    </li>
+                                </ul>
+                            </li>
+                         </ul>
+                     </li>  
+                 </ul>   
+            </div> 
+        </div>
+        <div id="right-box" v-cloak>
+            <div class="triangles"></div>
+            <p>已配送供应商</p>
+               <div class="tree-data"> 
+                     <ul class="ul1" v-for="item1 in dataListLeft" v-if="item1.show"> 
+                         <li class="right-tree-li">  
+                            <!-- 第一层 -->
+                            <div class="showList" @click="showList($event)" ></div>
+                            <a href="javascript:void(0);" :data-id="item1.supplier_id">{{item1.supplier_name}}</a>  
+                            
+                             <ul class="ul2" v-for="item2 in item1.cateData"  v-if="item2.show">
+                                <li>
+                                    <!-- 第二层 -->
+                                    <div class="showList" @click="showList($event)"></div>
+                                    <a href="javascript:void(0);" :data-id="item2.cate_id" >{{item2.cate_name}}</a> 
+                                   
+                                    <ul class="ul3" v-for="item3 in item2.cateData">
+                                        <li>
+                                            <!-- 第三层 -->
+                                            <a href="javascript:void(0);" v-if="item3.status == 1" :data-id="item3.brand_id" >{{item3.brand_name}}
+                                            </a>  
+                                        </li>
+                                    </ul>
+                                </li>
+                             </ul> 
+                         </li>  
+                     </ul>  
+                </div>   
+         </div>
+    </div>
+</div>
+<script src="./js/select2/select2.min.js"></script>
+<script src="./js/mock.js"></script>
+<script type="text/javascript">
+    //原数据
+    Mock.mock('http://127.0.0.1:8081/data', {"first_38":{"supplier_id":"38","supplier_name":"\u5317\u4eac\u83b1\u8d1d\u65af\u751f\u7269\u79d1\u6280\u6709\u9650\u516c\u53f8","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"1162","brand_name":"\u7b2c\u4e00\u6761","status":"1"},{"brand_id":"1163","brand_name":"\u7b2c\u4e8c\u6761","status":"1"}]}}},"first_2":{"supplier_id":"2","supplier_name":"\u5317\u4eac\u5b8f\u6377\u79d1\u6280\u6709\u9650\u516c\u53f8","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"1206","brand_name":"01\u8bd5\u5242\u6d4b\u8bd5","status":"1"},{"brand_id":"2288","brand_name":"Sigma-Aldrich","status":"1"},{"brand_id":"2468","brand_name":"Pierce","status":"1"},{"brand_id":"2290","brand_name":"\u56db\u5b63\u9752","status":"1"},{"brand_id":"1207","brand_name":"Merck Millipore","status":"1"},{"brand_id":"1174","brand_name":"Promega","status":"1"},{"brand_id":"1175","brand_name":"Invitrogen","status":"1"},{"brand_id":"2469","brand_name":"Gibco","status":"1"},{"brand_id":"2467","brand_name":"Fermentas ","status":"1"},{"brand_id":"2255","brand_name":"TCI","status":"1"}]},"two1002":{"cate_id":"1002","cate_name":"02\u8bd5\u5242\u76d2","cateData":[{"brand_id":"2337","brand_name":"\u8fea\u6fb3","status":"1"},{"brand_id":"2323","brand_name":"QIAGEN","status":"1"},{"brand_id":"2338","brand_name":"TIANGEN","status":"1"},{"brand_id":"2336","brand_name":"Sigma-Aldrich","status":"1"},{"brand_id":"2316","brand_name":"Promega","status":"1"}]},"two1003":{"cate_id":"1003","cate_name":"03\u8272\u8c31\u8017\u6750","cateData":[{"brand_id":"2374","brand_name":"Sigma-Aldrich","status":"1"},{"brand_id":"2375","brand_name":"\u4fa8\u724c","status":"1"},{"brand_id":"2376","brand_name":"\u6d25\u817e","status":"1"},{"brand_id":"2371","brand_name":"Agilent","status":"1"}]},"two1005":{"cate_id":"1005","cate_name":"05\u6807\u51c6\u54c1","cateData":[{"brand_id":"2411","brand_name":"Merck Millipore","status":"1"},{"brand_id":"2412","brand_name":"Sigma-Aldrich","status":"1"},{"brand_id":"2413","brand_name":"TCI","status":"1"}]},"two1007":{"cate_id":"1007","cate_name":"07\u5176\u5b83\u8017\u6750","cateData":[{"brand_id":"2424","brand_name":" Merck Millipore","status":"1"},{"brand_id":"2435","brand_name":"\u745e\u4eac","status":"1"},{"brand_id":"2434","brand_name":"\u4fa8\u724c","status":"1"},{"brand_id":"2433","brand_name":"\u5b8f\u6377","status":"1"},{"brand_id":"2426","brand_name":"Corning","status":"1"},{"brand_id":"2427","brand_name":"Axygen","status":"1"},{"brand_id":"2432","brand_name":"KIRGEN","status":"1"},{"brand_id":"2431","brand_name":"Promega","status":"1"},{"brand_id":"2430","brand_name":"Sigma-Aldrich","status":"1"}]}}},"first_48":{"supplier_id":"48","supplier_name":"\u6d4b\u8bd5\u4f9b\u5e94\u5546","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"1206","brand_name":"01\u8bd5\u5242\u6d4b\u8bd5","status":"0"}]}}},"first_49":{"supplier_id":"49","supplier_name":"\u6d4b\u8bd5\u4f9b\u5e94\u55462","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"1206","brand_name":"01\u8bd5\u5242\u6d4b\u8bd5","status":"1"}]}}},"first_13":{"supplier_id":"13","supplier_name":"\u5317\u4eac\u5170\u4f2f\u745e\u751f\u7269\u6280\u672f\u6709\u9650\u8d23\u4efb\u516c\u53f8","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"2253","brand_name":"J&K","status":"1"}]},"two1003":{"cate_id":"1003","cate_name":"03\u8272\u8c31\u8017\u6750","cateData":[{"brand_id":"2374","brand_name":"Sigma-Aldrich","status":"0"}]},"two1002":{"cate_id":"1002","cate_name":"02\u8bd5\u5242\u76d2","cateData":[{"brand_id":"2333","brand_name":"Oxoid","status":"1"},{"brand_id":"2334","brand_name":"BIOPHARM","status":"1"}]},"two1004":{"cate_id":"1004","cate_name":"04\u57f9\u517b\u57fa","cateData":[{"brand_id":"2381","brand_name":"Oxoid","status":"1"},{"brand_id":"2388","brand_name":"ATCC","status":"1"}]},"two1005":{"cate_id":"1005","cate_name":"05\u6807\u51c6\u54c1","cateData":[{"brand_id":"2397","brand_name":"ROMER","status":"1"}]}}},"first_71":{"supplier_id":"71","supplier_name":"\u4e0a\u6d77\u5b89\u8c31\u5b9e\u9a8c\u79d1\u6280\u80a1\u4efd\u6709\u9650\u516c\u53f8","cateData":{"two1001":{"cate_id":"1001","cate_name":"01\u8bd5\u5242","cateData":[{"brand_id":"2269","brand_name":"\u5b89\u8c31CNW","status":"0"},{"brand_id":"2270","brand_name":"\u5b89\u8c31","status":"0"}]},"two1007":{"cate_id":"1007","cate_name":"07\u5176\u5b83\u8017\u6750","cateData":[{"brand_id":"2443","brand_name":"Witeg","status":"1"},{"brand_id":"2442","brand_name":"CNW","status":"0"}]},"two1003":{"cate_id":"1003","cate_name":"03\u8272\u8c31\u8017\u6750","cateData":[{"brand_id":"2361","brand_name":"\u5b89\u8c31CNW","status":"1"},{"brand_id":"2362","brand_name":"Witeg","status":"1"}]},"two1005":{"cate_id":"1005","cate_name":"05\u6807\u51c6\u54c1","cateData":[{"brand_id":"2405","brand_name":"LGC Standards","status":"1"},{"brand_id":"2404","brand_name":"TRC","status":"1"},{"brand_id":"2403","brand_name":"WITEGA","status":"1"},{"brand_id":"2402","brand_name":"\u7f8e\u56fd02Si","status":"1"},{"brand_id":"2401","brand_name":"\u5b89\u8c31AA","status":"1"}]}}}});  
+    //点击添加
+    Mock.mock('http://127.0.0.1:8081/submit', {
+        "code":200,
+        "msg":"操作成功"
+    });  
+
+    // status    如果是1 是被选中状态  
+    // 如果是0  是删除状态
+    new Vue({
+        el: '#ediText',
+        data: function() {
+            return {
+                startData: {}, //一进页面的数据
+                dataListLeft: {}, //原数据列表
+                searchData: null, //搜索出来的列表项
+                isSearch: false, //是否正在进行搜索活操作搜索项
+                dataLast:{}//展示的数据列表
+            }
+        },
+        methods: {
+            getQuery: function() {
+                var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+                    args = {},
+                    items = qs.length ? qs.split("&") : [],
+                    item = name = value = null;
+                for (var i = 0; i < items.length; i++) {
+                    item = items[i].split('=');
+                    name = decodeURIComponent(item[0]);
+                    value = decodeURIComponent(item[1]);
+                    if (name.length) {
+                        args[name] = value;
+                    }
+                }
+                return args;
+            },
+            getParams: function(_this) {
+                var _this = _this,
+                    len = $(_this).parents('ul').length,
+                    params = {};
+                switch (len) {
+                    case 3:
+                        params = {
+                            supplier_id: $(_this).parents('.ul2').parent('li').children('a').attr('data-id'),
+                            cate_id: $(_this).parents('.ul3').parent('li').children('a').attr('data-id'),
+                            brand_id: $(_this).attr('data-id'),
+                            level: 3
+                        }
+                        break;
+                    case 2:
+                        params = {
+                            supplier_id: $(_this).parents('.ul2').parent('li').children('a').attr('data-id'),
+                            cate_id: $(_this).attr('data-id'),
+                            level: 2
+                        }
+                        break;
+                    case 1:
+                        params = {
+                            supplier_id: $(_this).attr('data-id'),
+                            level: 1
+                        }
+                }
+
+                params.action = $(_this).hasClass('selected') ? '1' : '0';
+                params.id = this.getQuery().id;
+                this.submitTree(params);
+            },
+            submitTree: function(params) {
+                $.ajax({
+                        url: 'http://127.0.0.1:8081/submit',
+                        type: 'post',
+                        dataType: 'json',
+                        data: params
+                    })
+                    .done(function(data) {
+                        var _this = this;
+                        if (data.code === 200) {
+                            if (_this.isSearch) {
+                                thisdata = _this.searchData
+                            } else {
+                                thisdata = _this.dataListLeft
+                            }
+                            $.each(thisdata, function(indexsup, sup) {
+                                if (sup.supplier_id == params.supplier_id) {
+                                    switch (params.level) {
+                                        case 1:
+                                            $.each(sup.cateData, function(index, el) {
+                                                $.each(el.cateData, function(index2, el2) {
+                                                    el2.status = params.action;
+                                                });
+                                                el.status = params.action;
+                                            });
+                                            _this.showTree(thisdata);
+                                            break;
+                                        case 2:
+                                            $.each(sup['cateData']['two' + params.cate_id]['cateData'], function(index, el) {
+                                                el.status = params.action;
+                                            });
+                                            sup['cateData']['two' + params.cate_id]['status'] = params.action;
+                                            _this.showTree(thisdata);
+                                            break;
+                                        case 3:
+                                            $.each(sup['cateData']['two' + params.cate_id]['cateData'], function(index, el) {
+                                                if (el.brand_id == params.brand_id) {
+                                                    el.status = params.action;
+                                                    return false;
+                                                }
+                                            });
+                                            _this.showTree(thisdata);
+                                            break;
+                                        default:
+                                            layer.msg('程序出错!请重试')
+                                            break;
+                                    }
+                                    return false;
+                                }
+                            });
+                            layer.closeAll();
+                            layer.msg(data.msg);
+                        } else {
+                            layer.closeAll();
+                            layer.msg(data.msg);
+                        }
+                    }.bind(this))
+                    .fail(function() {
+                        layer.msg("error");
+                    });
+            },
+            showTree: function(data) {
+                /** 
+                    show:该层级下有内容 (右侧显示内容)
+                    status: 1:该层级为全选状态 0:!全选状态
+                    */
+                $.each(data, function(index1, item1) {
+                    var statusNum1 = 0;
+                    var item1Arr = Object.keys(item1.cateData);
+                    item1.show = false;
+                    item1.status = '0';
+                    $.each(item1.cateData, function(index2, item2) {
+                        var statusNum2 = 0;
+                        item2.show = false;
+                        item2.status = '0';
+                        $.each(item2.cateData, function(index3, item3) {
+                            if (item3.status == '1') {
+                                statusNum2++;
+                                item1.show = true;
+                                item2.show = true;
+                            }
+                        });
+                        if (statusNum2 == item2.cateData.length) {
+                            item2.status = '1';
+                        }
+                        if (item2.status == '1') {
+                            statusNum1++
+                        }
+                    });
+                    if (statusNum1 == item1Arr.length) {
+                        item1.status = '1';
+                    }
+                });
+                 
+                if (this.isSearch) {
+                    this.searchData = data; 
+                    $.extend(this.dataListLeft, this.searchData);
+                    this.$nextTick(function() { 
+                        $('#left-box .ul1 ul').css('display','block');
+                        $('#left-box .showList').css('backgroundImage', 'url(./img/hide.png)');
+                    });
+                    this.dataLast = this.searchData;
+                } else {
+                    this.dataListLeft = data;
+                    this.dataLast = this.dataListLeft;
+                }
+            },
+            clickList: function(e) {
+                /**
+                 * [clickList：改变样式] 
+                 */
+                layer.load(1, {
+                    shade: [0.2, '#000']
+                });
+                var e = e.target;
+                !$(e).hasClass('selected') ? $(function() {
+                    $(e).addClass('selected');
+                }) : $(function() {
+                    $(e).removeClass('selected');
+                });
+                this.getParams(e);
+            },
+            showList: function(e) {
+                /**
+                 * [showList: 显示隐藏列表项]
+                 */
+                var e = e.target;
+                $(e).siblings('ul').slideToggle(100, function() {
+                    if ($(e).siblings('ul').is(':hidden')) {
+                        $(e).css('backgroundImage', 'url(./img/show.png)');
+                    } else {
+                        $(e).css('backgroundImage', 'url(./img/hide.png)');
+                    }
+                });
+            }
+        },
+        mounted: function() {
+            layer.load(1, {
+                shade: [0.2, '#000']
+            });
+            //渲染三級数据 
+            var _this = this;
+            $.ajax({
+                    url: 'http://127.0.0.1:8081/data',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        id: _this.getQuery().id
+                    }
+                })
+                .done(function(data) {
+                    _this.showTree(data);
+                    $("#supplierSearch").select2({
+                        placeholder: '搜索供应商',
+                        allowClear: true
+                    });
+                    _this.startData = _this.dataListLeft;
+                    layer.closeAll();
+                })
+                .fail(function() {
+                    layer.msg("error");
+                });
+            $('body').on('change', '#supplierSearch', function(event) {
+                event.preventDefault();    
+                if ($(this).val()) {
+                    _this.isSearch = true;
+                    var obj = {};
+                    obj['first_' + $(this).val()] = _this.dataListLeft['first_' + $(this).val()]; 
+                    _this.showTree(obj); 
+                } else {
+                    _this.isSearch = false;
+                    _this.showTree(_this.dataListLeft);
+                    _this.$nextTick(function() { 
+                        $('#left-box .ul1 ul').css('display','none');
+                        $('#left-box .showList').css('backgroundImage', 'url(./img/show.png)');
+                    });
+                }
+            });
+        }
+    })
+ 
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ball</title>
+</head>
+<style>
+	*{padding:0;margin:0;border:0;}
+	.ball{position: absolute; width: 160px; height: 160px; background: #fff; border-radius: 160px 160px 72px 160px; transform: rotate(45deg); box-shadow: 17px 0 80px 3px pink inset; }
+	.ball::after{content: ''; display: block; position: absolute; bottom: 0;right: 0; border-width: 10px; border-style: solid; border-top-color: transparent; border-left-color: transparent; border-right-color: transparent; border-bottom-color: pink; transform: rotate(-45deg); border-radius: 50%}
+</style>
+<body>
+</body>
+</html>
+<script>
+		//1 创建节点
+		//2 向上运动
+		//3 事件监听
+		//4 气球动画
+		var num = 10;
+		var wW = window.innerWidth;
+		var wH = window.innerHeight;
+		var balls = [];
+
+		init(num); //初始化
+		function init(num) {
+			var doms = document.createDocumentFragment();
+			for (var i = 0; i < num; i++) {
+				var dom = document.createElement('DIV');
+				dom.className = 'ball';
+				dom.style.top = wH - 160 + 'px';
+				dom.style.left = ~~(Math.random() * wW) + 'px';
+				dom.speed = ~~(Math.random() * 7) + 1;
+				doms.appendChild(dom);
+				balls.push(dom)
+			}
+			document.body.appendChild(doms)
+		}
+
+		function move() {
+			var doms = document.querySelectorAll('.ball');
+			for (var i = 0, len = doms.length; i < len; i++) {
+				doms[i].style.top = (doms[i].offsetTop - doms[i].speed) + 'px';
+				if (doms[i].style.top.slice(0, doms[i].style.top.length - 2) < -160) {
+					doms[i].style.top = wH - 160 + 'px';
+				}
+			}
+		}
+
+		// 定时器
+		run() 
+		function run() {
+			move()
+			setTimeout(run, 1000/60)
+		}
+
+
+		document.addEventListener('click', function(e) {
+			if (e.target.className === 'ball') {
+				ballAnimate.call(e.target);
+				init(1)
+				var index = balls.lastIndexOf(e.target);
+				balls.splice(index,1);
+				
+			}
+		}, true);
+
+
+		// 气球动画
+		function ballAnimate() {
+			var rotate = [30, 80];
+			var index = 0;
+			this.timer = setInterval(function() {
+				console.log(	index);
+				index++;
+				index %= 2;
+				this.speed++;
+				this.style.top = this.offsetTop - this.speed + 'px';
+				this.style.width = this.offsetWidth - 10 + 'px';
+				this.style.height = this.offsetHeight - 10 + 'px';
+				this.style.transform = 'rotate('+[index]+')' + 'deg'; 
+			}.bind(this), 1000/60);
+			
+		}
+
+</script>

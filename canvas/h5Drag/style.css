@@ -1,0 +1,17 @@
+.demo {padding-top: 30px; } 
+.container {background-color: #f0f3f9; font-family: 'PingFang SC', 'Microsoft Yahei'; min-height: 610px; position: relative; overflow: hidden; } 
+.module-ul {width: 180px; position: absolute; top: 0; bottom: 0; left: 0; list-style: none; margin: 0; padding: 0; background-color: #34538b; } 
+.module-li {margin: 20px auto; padding: 10px 0; border:4px solid #fff; height: 103px; width: 150px; text-align: center; cursor: move; position: relative; } 
+.module-li:hover::before {content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0; padding: 10px; background-color: rgba(0,0,0,.5); } 
+.module-body {margin-left: 180px; position: relative } 
+.module-stage {max-width: 90%; min-width: 600px; margin: 0 auto; } 
+.module-placeholder {height: 584px; background-color: #fff; position: relative; margin: 20px 0; } 
+.module-placeholder:empty::before {position: absolute; left: 50%; top: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); color: #aaa; content: '从左侧拖模块放这里'; font-size: 20px; } 
+.module-placeholder.dragenter {outline: 2px dashed #ddd; } 
+.module-drag {padding: 10px 0; margin: 20px 0; background-color: #fff; text-align: center; cursor: move; position: relative; } 
+.module-drag.dragstart {opacity: .5; } 
+.module-drag:hover::before {content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; } /* 模块拖拽删除 */ .module-remove {position: absolute; top: 0; bottom: 0; right: 0; width: 180px; padding-top: 40px; background-color: #34538b; transition: left .25s, background-color .2s; z-index: 1; } 
+.module-remove.dragenter {left: 0; } 
+.module-remove-icon {position: absolute; font-size: 160px; left: 50%; top: 45%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); color: #fff; } 
+.module-remove:hover, .module-remove.dragover {background-color: #F15656; cursor: pointer; } 
+.success-img{position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }

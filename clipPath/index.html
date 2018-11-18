@@ -1,0 +1,138 @@
+<!-- @author  yxy  2016/12/22 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>切割图片</title> 
+	<style>
+		body{
+			background: #000;
+		} 
+		img{ 
+			width: 900px; 
+			height: 600px;
+			border: 0;
+			position: absolute;
+            top: 0;
+            right: 0;
+            bottom:0;
+            left: 0;
+            margin:auto; /*-webkit-clip-path: polygon(); clip-path: polygon(300px 0%, 660px 36px, 100% 100% ,0 100%);*/ 
+        } 
+	</style> 
+</head>
+<body>
+	<img src="img1.jpg" alt="" class="img"> 
+	<img src="img2.jpg" alt="" class="img"> 
+	<img src="img3.jpg" alt="" class="img"> 
+	<img src="img4.jpg" alt="" class="img"> 
+	<script>
+		var bannerX1 = 50,
+			/*(第四个点) 从51到100*/
+			bannerY2 = 0,
+			/*(第五个点) 从1到100*/
+			bannerX3 = 100,
+			/*(第六个点) 从100到0*/
+			bannerY4 = 100,
+			/*(第七个点) 从100到0*/
+			bannerX5 = 0,
+			/*(第八个点) 从0到50*/
+			bannerArr = document.querySelectorAll('.img');
+
+
+		//前三个坐标不用动
+		function rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val) {
+			// 解决浮点数问题
+			if (bannerX1 >= 100) bannerX1 = Math.round(bannerX1) + 1;
+			if (bannerY2 >= 100) bannerY2 = Math.round(bannerY2) + 1;
+			if (bannerX3 <= 0) bannerX3 = Math.round(bannerX3) - 1;
+			if (bannerY4 <= 0) bannerY4 = Math.round(bannerY4) - 1;
+
+			if (bannerX1 >= 50 && bannerX1 <= 100) {
+				val.setAttribute("style", "clip-path:polygon(0 0,50% 0%,50% 50%, " + bannerX1 + "% 0,   100% 0,100% 50%,100% 100%, 50% 100%, 0 100% ,0 50%);-webkit-clip-path:polygon(0 0,50% 0%,50% 50%, " + bannerX1 + "% 0,   100% 0,100% 50%,100% 100%, 50% 100%, 0 100% ,0 50%)");
+			} else if (bannerX1 == 101 && bannerY2 >= 0 && bannerY2 <= 100 && bannerX3 == 100) {
+				val.setAttribute("style", "clip-path:polygon(0 0,50% 0%,50% 50%,100% " + bannerY2 + "%, 100% 50%, 100% 100% ,50% 100%, 0 100% ,0 50%);-webkit-clip-path:polygon(0 0,50% 0%,50% 50%,100% " + bannerY2 + "%, 100% 50%, 100% 100% ,50% 100%, 0 100% ,0 50%)");
+			} else if (bannerY2 == 101 && bannerX3 <= 100 && bannerX3 >= 0 && bannerY4 == 100) {
+				val.setAttribute("style", "clip-path:polygon(0 0,50% 0%,50% 50%, " + bannerX3 + "% 100%, 0 100%);-webkit-clip-path:polygon(0 0,50% 0%,50% 50%, " + bannerX3 + "% 100%, 0 100%)");
+			} else if (bannerX3 == -1 && bannerY4 >= 0 && bannerY4 <= 100 && bannerX5 == 0) {
+				val.setAttribute("style", "clip-path:polygon(0 0,50% 0%,50% 50%, 0 " + bannerY4 + "% ,0 100%);-webkit-clip-path:polygon(0 0,50% 0%,50% 50%, 0 " + bannerY4 + "% ,0 100%)");
+			} else if (bannerY4 == -1 && bannerX5 <= 50) {
+				val.setAttribute("style", "clip-path:polygon(0 0,50% 0%,50% 50%," + bannerX5 + "% 0);-webkit-clip-path:polygon(0 0,50% 0%,50% 50%," + bannerX5 + "% 0)");
+			}
+
+		}
+
+
+		
+
+		var bannerEach = bannerArr.forEach(function(val, index) { //dom值 索引 
+			 
+				function bannerX1F() {
+					if (bannerX1 >= 50 && bannerX1 <= 100 && bannerY2 == 0) {
+						setTimeout(function() {
+							rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val);
+							bannerX1 = bannerX1 + 0.1;
+							return bannerX1F();
+						}, 0.01);
+					} else {
+						return bannerY2F();
+					}
+				}
+				bannerX1F();
+
+				function bannerY2F() {
+					if (bannerY2 >= 0 && bannerY2 <= 100) {
+						setTimeout(function() {
+							rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val);
+							bannerY2 = bannerY2 + 0.1;
+							return bannerY2F();
+						}, 0.01);
+					} else {
+						return bannerX3F();
+					}
+				}
+
+				function bannerX3F() {
+					if (bannerX3 <= 100 && bannerX3 >= 0) {
+						setTimeout(function() {
+							rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val);
+							bannerX3 = bannerX3 - 0.1;
+							return bannerX3F();
+						}, 0.01);
+					} else {
+						return bannerY4F();
+					}
+				}
+
+				function bannerY4F() {
+					if (bannerY4 <= 100 && bannerY4 >= 0) {
+						setTimeout(function() {
+							rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val);
+							bannerY4 = bannerY4 - 0.1;
+							return bannerY4F();
+						}, 0.01);
+					} else {
+						return bannerX5F();
+					}
+				}
+
+				function bannerX5F() {
+					if (bannerX5 <= 50 && bannerX5 >= 0) {
+						setTimeout(function() {
+							rotate(bannerX1, bannerY2, bannerX3, bannerY4, bannerX5, val);
+							bannerX5 = bannerX5 + 0.1;
+							return bannerX5F();
+						}, 0.01);
+					} else {
+						bannerX1 = 50; /*(第四个点) 从51到100*/
+						bannerY2 = 0; /*(第五个点) 从1到100*/
+						bannerX3 = 100; /*(第六个点) 从100到0*/
+						bannerY4 = 100; /*(第七个点) 从100到0*/
+						bannerX5 = 0; /*(第八个点) 从0到50*/
+					}
+				} 
+		});
+		
+	</script>
+</body>
+</html>

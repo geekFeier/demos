@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title> 
+</head> 
+<style>  
+	body{background: gray;color:#fff;}  
+	#cube{margin:50px auto;}
+	#cube li{display: block;float: left;width: 80px;height: 80px;line-height: 28px; }  
+	.header{text-align: center;padding:20px;}
+	.header > div{display: inline-block}
+	.header #ok{width: 80px;height: 28px;background: #fff;color:#333;line-height: 28px;border-radius: 2px;margin-left: 10px;cursor: pointer;} 
+	input{
+		height: 28px; 
+		outline: none;
+		text-align: center;
+		border: 1px solid gray;
+		border-radius: 3px;
+	}
+	input[type=number]{ 
+		width: 60px;
+		-moz-appearance:textfield;
+	}
+	input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+	     -webkit-appearance: none !important;
+	     margin: 0; 
+	 }
+	 input[type=text]{
+	 	width: 190px;
+	 }
+</style>
+<body>
+	<div>
+		<div class="header">
+			<div class="require-div">
+				<span>你要定义</span>
+				<input type="number" id="allNum" value="16" placeholder="数量">
+				<input type="number" id="columnNum" value="4" placeholder="列数">
+				<input type="text" id="arr" value="2,3,2,1"  oninput="this.value=this.value.replace(/[^\d,]/g,'')"  placeholder="规律 逗号风格 eg. 2,3,2,1 ">
+				<input type="text" id="fg" value="#fff" placeholder="前景色 eg.#FFFFFF">
+				<input type="text" id="bg" value="#000" placeholder="背景色 eg.#000000（可省略）">
+				<span>样子的块块呢？</span>
+			</div> 
+		</div> 
+	</div>
+	<ul id="cube"></ul>
+</body> 
+<script type="text/javascript" src="cube.js"></script>
+<script> 
+	cubeF(16, 4,[2, 3, 2, 1] , '#fff', '#000'); //初始化 
+// 	window.onload = function() {
+// 	// cubeF(16, 4,[2, 3, 2, 1] , '#fff', '#000'); 初始化 
+// 	// 默认动画
+// 		var changeArr = [
+// 				[2, 3, 2, 1], 
+// 				[2, 3, 2, 2], 
+// 				[2, 3, 2, 3], 
+// 				[2, 3, 2, 4],
+// 				[2, 3, 2, 5],
+// 				[2, 3, 2, 6],
+// 				[2, 3, 2, 7],
+// 				[2, 3, 2, 8],
+// 				[2, 3, 2, 9]
+// 			] 
+			
+// 		for (var w = 0; w < changeArr.length; w++) { 
+// 			(function(y) {
+// 				setTimeout(function() { 
+// 					setDom2();
+// 					cubeF(16, 4, changeArr[y], '#fff', '#000'); 
+// 				}, 300 * y);  
+// 			})(w);  
+// 		} 
+
+
+// 	}
+</script>
+</html>
+
+<!-- 
+0 2 5 7 8 10 13 15 16 18 21 23 24
+0+2 2+3 5+2 7+1 8+2 10+3 13+2 15+1 16+2 18+3 21+2 23+1
+2 3 2 1   	   2 3 2 1    2 3 2 1  -->
+<!-- 白黑白黑   	   白黑白黑   白黑白黑 -->
+

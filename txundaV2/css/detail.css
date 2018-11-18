@@ -1,0 +1,103 @@
+/*项目内容icon及其背景图*/
+.cuoti-ul li:first-child{background: url(../img/cuoti-icon1.png) no-repeat 10px center; }
+.cuoti-ul li:nth-child(2){background: url(../img/cuoti-icon2.png) no-repeat 10px center; }
+.cuoti-ul li:last-child{background: url(../img/cuoti-icon3.png) no-repeat 10px center; }
+.cuoti .detail1{padding-bottom: 8%;background: url(../img/cuoti-bg.png) no-repeat right 20px;background-size: 55% auto } 
+
+ 
+.kuaidian-app-ul li:first-child{background: url(../img/kuaidian-app-icon1.png) no-repeat 10px center; }
+.kuaidian-app-ul li:nth-child(2){background: url(../img/kuaidian-app-icon2.png) no-repeat 10px center; }
+.kuaidian-app-ul li:nth-child(3){background: url(../img/kuaidian-app-icon3.png) no-repeat 10px center; }
+.kuaidian-app-ul li:last-child{background: url(../img/kuaidian-app-icon4.png) no-repeat 10px center; }
+.kuaidian-app .detail1{padding-bottom: 8%;background: url(../img/kuaidian-app-bg.png) no-repeat right 20px;background-size: 55% auto } 
+
+
+.forfans-ul li:first-child{background: url(../img/forfans-icon1.png) no-repeat 10px center; }
+.forfans-ul li:nth-child(2){background: url(../img/forfans-icon2.png) no-repeat 10px center; } 
+.forfans-ul li:last-child{background: url(../img/forfans-icon3.png) no-repeat 10px center; }
+.forfans .detail1{padding-bottom: 8%;background: url(../img/forfans-bg.png) no-repeat right 20px;background-size: 55% auto } 
+
+.english-order-ul li:first-child{background: url(../img/english-order-icon1.png) no-repeat 10px center; }
+.english-order-ul li:nth-child(2){background: url(../img/english-order-icon2.png) no-repeat 10px center; } 
+.english-order-ul li:last-child{background: url(../img/english-order-icon3.png) no-repeat 10px center; }
+.english-order .detail1{padding-bottom: 8%;background: url(../img/english-order-bg.png) no-repeat right 20px;background-size: 55% auto } 
+
+.falvxiang-ul li:first-child{background: url(../img/falvxiang-icon1.png) no-repeat 10px center; }
+.falvxiang-ul li:nth-child(2){background: url(../img/falvxiang-icon2.png) no-repeat 10px center; } 
+.falvxiang-ul li:last-child{background: url(../img/falvxiang-icon3.png) no-repeat 10px center; }
+.falvxiang .detail1{padding-bottom: 8%;background: url(../img/falvxiang-bg.png) no-repeat right 20px;background-size: 55% auto }
+
+.liangcaifu-ul li:first-child{background: url(../img/liangcaifu-icon1.png) no-repeat 10px center; }
+.liangcaifu-ul li:nth-child(2){background: url(../img/liangcaifu-icon2.png) no-repeat 10px center; } 
+.liangcaifu-ul li:last-child{background: url(../img/liangcaifu-icon3.png) no-repeat 10px center; }
+.liangcaifu .detail1{padding-bottom: 8%;background: url(../img/liangcaifu-bg.png) no-repeat right 20px;background-size: 55% auto }
+
+.zhaitianxia-ul li:first-child{background: url(../img/zhaitianxia-icon1.png) no-repeat 10px center; }
+.zhaitianxia-ul li:nth-child(2){background: url(../img/zhaitianxia-icon2.png) no-repeat 10px center; } 
+.zhaitianxia-ul li:last-child{background: url(../img/zhaitianxia-icon3.png) no-repeat 10px center; }
+.zhaitianxia .detail1{padding-bottom: 8%;background: url(../img/zhaitianxia-bg.png) no-repeat right 20px;background-size: 55% auto }
+
+.dijianzhi-ul li:first-child{background: url(../img/dijianzhi-icon1.png) no-repeat 10px center; }
+.dijianzhi-ul li:nth-child(2){background: url(../img/dijianzhi-icon2.png) no-repeat 10px center; } 
+.dijianzhi-ul li:last-child{background: url(../img/dijianzhi-icon3.png) no-repeat 10px center; }
+.dijianzhi .detail1{padding-bottom: 8%;background: url(../img/dijianzhi-bg.png) no-repeat right 20px;background-size: 55% auto }
+
+.kuaidian-web-ul li:first-child{background: url(../img/kuaidian-app-icon1.png) no-repeat 10px center; }
+.kuaidian-web-ul li:nth-child(2){background: url(../img/kuaidian-app-icon2.png) no-repeat 10px center; }
+.kuaidian-web-ul li:nth-child(3){background: url(../img/kuaidian-app-icon3.png) no-repeat 10px center; }
+.kuaidian-web-ul li:last-child{background: url(../img/kuaidian-app-icon4.png) no-repeat 10px center; }
+.kuaidian-web .detail1{padding-bottom: 8%;background: url(../img/kuaidian-web-bg.png) no-repeat right bottom;background-size: 55% auto } 
+
+.mude-web-ul li:first-child{background: url(../img/zhaitianxia-icon2.png) no-repeat 10px center; }
+.mude-web-ul li:nth-child(2){background: url(../img/mude-icon2.png) no-repeat 10px center; }
+.mude-web-ul li:nth-child(3){background: url(../img/zhaitianxia-icon3.png) no-repeat 10px center; }
+.mude-web-ul li:last-child{background: url(../img/english-order-icon3.png) no-repeat 10px center; }
+.mude-web .detail1{padding-bottom: 8%;background: url(../img/mude-web-bg.png) no-repeat right bottom;background-size: 55% auto } 
+
+.xinnong-web-ul li:first-child{background: url(../img/xinnong-icon1.png) no-repeat 10px center; }
+.xinnong-web-ul li:nth-child(2){background: url(../img/zhaitianxia-icon2.png) no-repeat 10px center; } 
+.xinnong-web-ul li:last-child{background: url(../img/zhaitianxia-icon3.png) no-repeat 10px center; }
+.xinnong-web .detail1{padding-bottom: 8%;background: url(../img/xinnong-web-bg.png) no-repeat right bottom;background-size: 55% auto } 
+
+.santong-web-ul li:first-child{background: url(../img/santong-icon1.png) no-repeat 10px center; }
+.santong-web-ul li:nth-child(2){background: url(../img/santong-icon2.png) no-repeat 10px center; } 
+.santong-web-ul li:last-child{background: url(../img/santong-icon3.png) no-repeat 10px center; }
+.santong-web .detail1{padding-bottom: 8%;background: url(../img/santong-web-bg.png) no-repeat right bottom;background-size: 55% auto } 
+/*项目内容icon及其背景图*/
+
+.detail-c{width: 80%;margin:0 auto;padding-top: 75px;}
+.detail1 h2{font-size: 20px;color: #0D0B1D;line-height: 110px;}
+.project-name{color:#344C9F;}
+.project-name-btn{width: 212px;height: 36px;margin-bottom:3%; line-height: 36px;  background: #506AB7;color: #fff;text-align: center;letter-spacing: 1px;}
+.detail-intro {width: 40%;}
+.detail-intro li{padding:16px 0 16px 82px;}
+.detail-intro .detail-li-title{ font-size: 16px;font-weight: bold; line-height: 30px;color: #333333}
+.detail-intro .detail-li-con{line-height: 22px; font-size: 14px;color: #93969A;}
+
+.detail2{position: relative; color: #fff;background: #4F6CD3;padding:4% 0 5%;}
+.detail2 h2 img{width: 200px;display: block; margin:0 auto;} 
+.detail2 h3 img{width: 220px;display: block; margin:0 auto;padding:2% 0 4% 0;} 
+.detail2 .detail2-chinese{padding-bottom: 15px; width: 76%;margin:0 auto; position: relative;}
+.detail2 .detail2-english{width: 78%;margin:0 auto; font-size: 16px;}
+
+.detail2-chinese:before,.detail2-chinese:after{content: "";position: absolute; width:25px;height:25px;display:block; }
+.detail2-chinese:before{left: -5%;top: 0px; background: url(../img/quote-left.png) no-repeat;background-size:100% auto; }
+.detail2-chinese:after{right: -5%;bottom: -15px;background: url(../img/quote-right.png) no-repeat;background-size:100% auto;}
+
+.project-page-list{text-align: center;padding:4% 0;}
+.project-page-list img{width: 88%;}
+
+.back{position: absolute;bottom:-14px;left: 50%;margin-left: -45px; text-align: center;cursor: pointer;}
+.back a{padding:5px 20px;border-radius: 20px; color: #000;background: #fff; font-size: 18px;}
+.back img{height: 20px;vertical-align: -3px;margin-right: 5px;}
+
+@media screen and (max-width: 1200px) {
+    .cuoti .detail1{padding-bottom: 8%;background: url(../img/cuoti-bg.png) no-repeat right 80%;background-size: 55% auto } 
+    .detail2 h2 img{width: 140px;}
+    .detail2 h3 img{width: 180px;}
+    .detail2 .detail2-chinese{font-size: 14px;}
+    .detail2 .detail2-english{font-size: 14px}
+}
+@media screen and (max-width: 700px) {
+    .detail-intro{width: 100%;}
+}

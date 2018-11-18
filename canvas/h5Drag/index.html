@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<head> 
+		<meta charset="UTF-8"> 
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>拖拽 demo</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="jquery-1.12.1.min.js"></script> 
+	</head>
+	<body>
+		<div class="container">
+			<ul id="module" class="module-ul">	
+				<li class="module-li" draggable="true" data-url="images/yu1.jpg" style="background: url(images/yu1.jpg) no-repeat center center/auto 100%;">
+				</li>
+				<li class="module-li" draggable="true" data-url="images/yu2.jpg" style="background: url(images/yu2.jpg) no-repeat center center/auto 100%;">
+				<li class="module-li" draggable="true" data-url="images/yu3.jpg" style="background: url(images/yu3.jpg) no-repeat center center/auto 100%;">
+				<li class="module-li" draggable="true" data-url="images/yu4.jpg" style="background: url(images/yu4.jpg) no-repeat center center/auto 100%;">
+			</ul>
+			
+			<div id="moduleBody" class="module-body">
+				<div id="moduleRemove" class="module-remove"><span class="module-remove-icon">×</span></div>
+				<div id="moduleStage" class="module-stage">
+					<div id="modulePlaHd" class="module-placeholder"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html> 
+<script>
+	var moduleDrag = (function() {
+		return {
+			el: {},
+			events: function() {
+				var el = this.el;
+				var module = el.module,//拖动元素
+					remove = el.remove,
+					moduler = el.moduler;//目标元素
+
+				$('li', module).on({
+					dragstart: function() { 
+						var li = $(this);
+						elDrag = li;
+					},
+					drag: function() { 
+						event.preventDefault();
+					},
+					dragend: function() { 
+						event.preventDefault();
+						elDrag = null;
+					}
+				}, el.body);
+
+				moduler.on({
+					dragenter: function() {
+						moduler.addClass('dragenter')
+					},
+					dragover: function() {
+						event.preventDefault();
+					},
+					drop: function() {
+						console.log(elDrag);
+						var url = elDrag && elDrag.attr('data-url');
+						console.log(url);
+						if (url) {
+							moduler.empty();
+							moduler.append('<img class="success-img" src="' + url + '" height="460" alt="模块占位图2">')
+						}
+						moduler.removeClass('dragenter')
+					}
+				}, el.body);
+
+				remove.on({
+					click:function(){
+						moduler.html('')
+					}
+				},el.body);
+
+			},
+			init: function() {
+				this.el = $.extend(this.el, {
+					module: $('#module'),
+					remove: $('#moduleRemove'),
+					body: $('#moduleBody'),
+					stage: $('#moduleStage'), //目标位置
+					moduler: $('#modulePlaHd')
+				});
+				this.events();
+			}
+
+		}
+	})();
+	moduleDrag.init()
+</script>	
+

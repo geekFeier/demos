@@ -1,0 +1,839 @@
+@charset "utf-8";
+*{ margin:0; padding:0; word-wrap:break-word; word-break:break-all;opacity: 1\0}
+body {color:#FF8370;font:0px "Microsoft yahei",sans-serif;min-width: 1100px;min-height:680px;resize:none;}
+input,button,textarea{outline:0; }
+div,h1,h2,h3,h4,h5,h6,body,p,span,button,ul,li,img,input{padding: 0px;margin: 0px;border:0px}
+article,aside,dialog,footer,header,section,nav,figure,menu{display:block}
+a{text-decoration: none;color:#FF8370;}
+a:hover{text-decoration: none;}
+ul,li{list-style:none; }
+img { border:none;vertical-align: middle; }
+button{border:0px;cursor: pointer;}
+.clearfix:after{content:""; display:block; height:0; clear:both; visibility:hidden; } 
+.fl{float:left;}
+.fr{float:right;}
+.fc{clear: both;}
+.tl{ text-align:left;}
+.tc{ text-align:center;}
+.tr{ text-align:right;}
+
+.mobile_style{display:none;width: 100%;}
+@media only screen and (max-width: 1100px) {
+    .sec1-head{width: 100%;position: static !important;} 
+    .sec1-head-c{width: 100% !important;}
+    #menu{display: none}
+    #dowebok{display: none}
+    .mobile_style{display: block;}
+    .mobile_img{width: 100%;}
+  }
+/*定义字体*/
+@font-face{
+    font-family: myNavFont;
+    src:url("font/font1.ttf"); 
+    font-size: 17px;
+}
+@font-face{
+    font-family: myNavFont2;
+    src:url("font/font2.ttf"); 
+    font-size: 16px;
+}
+@font-face{
+    font-family: shaoer;
+    src:url("font/font3.ttf"); 
+    
+}
+@font-face{
+    font-family: font4;
+    src:url("font/font4.ttf"); 
+    
+}
+/*官网首页开始*/
+/*.section{overflow: hidden;}*/ 
+ 
+.sec1-head{height: 80px;width: 100%;background-color: #000; position: absolute;z-index:4;}
+.sec1-head-c{width: 1100px;margin:0 auto;overflow: hidden;font-size: 16px;} 
+.sec1-head-c ul{float: right;line-height: 80px; color: #E3C25F;padding-right: 50px}
+.sec1-head-c ul li{display: inline-block; float: left; color: #E3C25F}
+.sec1-head-c ul li a{color: #E3C25F;padding:0px 25px; }
+.sec1-head-c ul li a:hover{color: #FB3403}
+.li_now a{color: #FB3403 !important;}
+.sec1-head-c img{margin-left: 40px;height: 56px; padding-top: 12px;float: left;} 
+.sec1-con1{position: absolute;z-index: 1}
+.logo-txt{font-size: 20px;font-family: shaoer;line-height: 80px;padding-left: 15px;color: #E3C25F}
+.sec1-con1 .sec1-img-layer1 img{width: 20%;height: 30vh}
+.sec1-con1 .sec1-img-layer2 img{width: 25%;height: 40vh}
+.sec1-con1 .sec1-img-layer3 img{width: 20%;height: 30vh}
+.sec1-con2{position:absolute;z-index: 2;width: 100%;height: 100vh;background-color: #000;opacity: 0.7}
+.sec1-con3{position: absolute;z-index: 3;width: 100%;height: 100vh;}
+.sec1-con3-div1{text-align: center;width: 100%;}
+.logo_txt{ position: relative;top:12vh;width: 17%;}
+
+/*show-pic的位置*/
+.sec1-con3-div2{width: 1100px;margin:0 auto; position: relative;top:-50px;z-index: 2}
+.sec1-con3-div2 img{position: absolute;width: 232px;height: 232px;}
+.sec1-con3-div2 img:first-child{top: 195px;left: 0px} 
+.sec1-con3-div2 img:nth-child(2){top: 195px;left: 235px;} 
+.sec1-con3-div2 img:nth-child(3){top: 245px;left: 423px;}
+.sec1-con3-div2 img:nth-child(4){top: 245px;left: 658px;} 
+.sec1-con3-div2 img:nth-child(5){top: 286px;left: 854px;} 
+.sec1-con3-div2 img:nth-child(6){top: 315px;left: 117px;} 
+.sec1-con3-div2 img:nth-child(7){top: 364px;left: 304px;}
+.sec1-con3-div2 img:nth-child(8){top: 365px;left: 540px;} 
+.sec1-con3-div2 img:last-child{top: 405px;left: 736px;} 
+
+.sec1-con3-div3{width: 100%;height:90vh;position: absolute;z-index: 1;text-align: center;}
+.sec1-con3-div3 img{height: 75%;width: 70%; opacity: 0.1;animation: bg-show 1s infinite;
+-moz-animation: bg-show 1s infinite;  
+-webkit-animation: bg-show 1s infinite;  
+-o-animation: bg-show 1s infinite;}
+@keyframes bg-show{
+from {opacity: 0.1}
+to {opacity: 1}
+}
+@-moz-keyframes bg-show  {
+from {opacity: 0.1}
+to {opacity: 1}
+}
+@-webkit-keyframes bg-show {
+from {opacity: 0.1}
+to {opacity: 1}
+}
+@-o-keyframes bg-show  {
+from {opacity: 0.1}
+to {opacity: 1}
+} 
+
+
+/*官网第二屏开始*/
+.section2-c{width: 1100px;height: 100vh;margin:0 auto;}
+.sec-tit-div{height: 18%;width: 100%; display: flex;align-items:center;}
+.sec-tit-div img{height: 80%;}
+.sec-con{position: relative;/* height: 810px; *//*height: 665px;*/height: 720px;}
+.sec-con .app_page_index{/* height: 680px; */ height: 575px; width: 300px;} 
+/*.sec-con div{opacity: 0}*/
+.sec-con > div:first-child{text-align: center;opacity: 0 }
+   
+.sec-con > div:not(:first-child){position: absolute;}
+.sec-con > div:nth-child(2){width: 50%;height:50%;top:0px;left:0px;}
+.sec-con > div:nth-child(3){width: 50%;height:50%;top:0px;right:0px; }
+.sec-con > div:nth-child(4){width: 50%;height:50%;bottom:0px;left:0px; }
+.sec-con > div:last-child{width: 50%;height:50%;bottom:0px;right:0px;} 
+
+/*每屏title的三个点开始*/
+.sec-tit-div {position: relative;}
+.sec-tit-div div:not(:first-child){position: absolute;opacity: 0}
+.sec-tit-div div:nth-child(2){width: 38px;height: 38px;border-radius: 50%;background: #FF0866; left:110px;top:100px; }
+.sec-tit-div div:nth-child(3){width: 25px;height: 25px;border-radius: 50%;background: #FF4189;left:160px;top:142px;}
+.sec-tit-div div:last-child{width: 20px;height: 20px;border-radius: 50%;background: #FF81B1;left:190px;top:178px;}
+/*每屏title的三个点结束*/
+
+/*二屏线条、原点定位*/
+.function div{position: absolute;}
+.sec-con{font-size: 16px;color: #FF619D}
+.circle1{width: 0;height: 0;background:#FF619D;border-radius: 50%;width: 7px\0;height: 7px\0; }
+.circle2{width: 0px;height: 0px;background: #FF619D;border-radius: 50%;width: 15px\0;height: 15px\0; }
+.function1 .line1,.function2 .line1{width:0px;height:0;border-bottom: 2px solid #FF619D;width: 152px\0;}
+.function1 .line2,.function2 .line2{width:0px;height: 0px;border-left: 2px solid #FF619D;height: 120px\0;}
+.function3 .line1{width: 0px;height:0;border-bottom: 2px solid #FF619D;width: 263px\0;}
+.function4 .line1{width: 0px;height:0;border-bottom: 2px solid #FF619D;width: 155px\0;}
+.function3 .line2,.function4 .line2{width:0px;height: 0px;border-left: 2px solid #FF619D;height: 51px\0;}
+.function-con{width: 280px;font-family: shaoer; }
+.function1 .function-con,.function3 .function-con{text-align: right;} 
+
+.function1 .circle1{right: 104px;bottom:79px;} 
+.function1 .circle2{right: 254px;bottom:79px;} 
+.function1 .line1{right: 110px;bottom:79px;}
+.function1 .line2{right: 267px;bottom:84px;}
+.function1 .function-con{bottom: 166px;/* right: 267px; */opacity: 0;right: 267px\0}
+
+.function2 .circle1{left: 104px;bottom:79px;} 
+.function2 .circle2{left: 254px;bottom:79px;} 
+.function2 .line1{left: 110px;bottom:79px;}
+.function2 .line2{left: 267px;bottom:84px;}
+.function2 .function-con{bottom: 166px;/* left: 267px; */opacity: 0;left: 267px\0}
+ 
+.function3 .circle1{right: -5px;bottom:216px;} 
+.function3 .circle2{right: 254px;bottom:203px;} 
+.function3 .line1{right: -0px;bottom:216px;}
+.function3 .line2{right: 267px;bottom:160px;}
+.function3 .function-con{bottom: 117px; /* right: 265px  */opacity: 0;right: 267px\0}
+
+.function4 .circle1{left: 105px;bottom:216px;} 
+.function4 .circle2{left: 254px;bottom:203px;} 
+.function4 .line1{left: 108px;bottom:216px;}
+.function4 .line2{left: 267px;bottom:160px;}
+.function4 .function-con{bottom: 117px;/* left: 265px */opacity: 0;left: 267px\0}
+/*二屏线条、原点定位*/
+
+/*二屏的css3动效开始*/
+/*title的圆点显示开始*/
+.section.active .sec-tit-div div:nth-child(2){
+    animation: titCircle 0.5s ease-out 0s forwards;
+    -moz-animation: titCircle 0.5s ease-out 0s forwards;  
+    -webkit-animation: titCircle 0.5s ease-out 0s forwards;   
+    -o-animation: titCircle 0.5s ease-out 0s forwards;
+}
+.section.active .sec-tit-div div:nth-child(3){
+    animation: titCircle 0.5s  ease-out 0.5s forwards;
+    -moz-animation: titCircle 0.5s ease-out 0.5s forwards;  
+    -webkit-animation: titCircle 0.5s ease-out 0.5s forwards;   
+    -o-animation: titCircle 0.5s ease-out 0.5s forwards;
+}
+.section.active .sec-tit-div div:last-child{
+    animation: titCircle 0.5s  ease-out 1s forwards;
+    -moz-animation: titCircle 0.5s ease-out 1s forwards;  
+    -webkit-animation: titCircle 0.5s ease-out 1s forwards;   
+    -o-animation: titCircle 0.5s ease-out 1s forwards;
+}
+@keyframes titCircle{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+@-webkit-keyframes titCircle{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+@-moz-keyframes titCircle{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+@-o-keyframes titCircle{
+    from{opacity: 0}
+    to{opacity: 1}
+}
+/*title的圆点显示结束*/
+
+/*手机首页图片的显示开始*/
+.section2.active .sec2-phone-img{ 
+    animation: secPhoneImg 0.6s 1.5s forwards;
+    -moz-animation: secPhoneImg 0.6s 1.5s forwards;  
+    -webkit-animation: secPhoneImg 0.6s 1.5s forwards;   
+    -o-animation: secPhoneImg 0.6s 1.5s forwards;
+}
+@keyframes secPhoneImg{
+    from{opacity: 0;transform:scale(0)}
+    to{opacity: 1;transform:scale(1)}
+}
+@-webkit-keyframes secPhoneImg{
+    from{opacity: 0;transform:scale(0)}
+    to{opacity: 1;transform:scale(1)}
+}
+@-moz-keyframes secPhoneImg{
+    from{opacity: 0;transform:scale(0)}
+    to{opacity: 1;transform:scale(1)}
+}
+@-o-keyframes secPhoneImg{
+    from{opacity: 0;transform:scale(0)}
+    to{opacity: 1;transform:scale(1)}
+}
+/*手机首页图片的显示结束*/
+
+/*section2中点和线的出现开始*/
+.section2.active .function1 .circle1{ 
+    animation: circleOne 0.2s 2.1s forwards;
+    -moz-animation: circleOne 0.2s 2.1s forwards;  
+    -webkit-animation: circleOne 0.2s 2.1s forwards;   
+    -o-animation: circleOne 0.2s 2.1s forwards;
+}
+.section2.active .function2 .circle1{ 
+    animation: circleOne 0.2s 3.8s forwards;
+    -moz-animation: circleOne 0.2s 3.8s forwards;  
+    -webkit-animation: circleOne 0.2s 3.8s forwards;   
+    -o-animation: circleOne 0.2s 3.8s forwards;
+}
+.section2.active .function4 .circle1{ 
+    animation: circleOne 0.2s 5.5s forwards;
+    -moz-animation: circleOne 0.2s 5.5s forwards;  
+    -webkit-animation: circleOne 0.2s 5.5s forwards;   
+    -o-animation: circleOne 0.2s 5.5s forwards;
+}
+.section2.active .function3 .circle1{ 
+    animation: circleOne 0.2s 7.1s forwards;
+    -moz-animation: circleOne 0.2s 7.1s forwards;  
+    -webkit-animation: circleOne 0.2s 7.1s forwards;   
+    -o-animation: circleOne 0.2s 7.1s forwards;
+}
+@keyframes circleOne{
+    from{opacity: 0;transform:scale(0)}
+    to{width:7px;height:7px;opacity: 1;transform:scale(1)}
+}
+@-webkit-keyframes circleOne{
+    from{opacity: 0;transform:scale(0)}
+    to{width:7px;height:7px;opacity: 1;transform:scale(1)}
+}
+@-moz-keyframes circleOne{
+    from{opacity: 0;transform:scale(0)}
+    to{width:7px;height:7px;opacity: 1;transform:scale(1)}
+}
+@-o-keyframes circleOne{
+    from{opacity: 0;transform:scale(0)}
+    to{width:7px;height:7px;opacity: 1;transform:scale(1)}
+}
+.section2.active .function1 .line1{ 
+    animation: lineOne 0.3s 2.4s forwards;
+    -moz-animation: lineOne 0.3s 2.4s forwards;  
+    -webkit-animation: lineOne 0.3s 2.4s forwards;   
+    -o-animation: lineOne 0.3s 2.4s forwards;
+}
+.section2.active .function2 .line1{ 
+    animation: lineOne 0.3s 4.1s forwards;
+    -moz-animation: lineOne 0.3s 4.1s forwards;  
+    -webkit-animation: lineOne 0.3s 4.1s forwards;   
+    -o-animation: lineOne 0.3s 4.1s forwards;
+}
+@keyframes lineOne{
+    from{width: 0;}
+    to{width:152px;}
+}
+@-webkit-keyframes lineOne{
+    from{width: 0;}
+    to{width:152px;}
+}
+@-moz-keyframes lineOne{
+    from{width: 0;}
+    to{width:152px;}
+}
+@-o-keyframes lineOne{
+    from{width: 0;}
+    to{width:152px;}
+}
+.section2.active .function1 .circle2{ 
+    animation: circleTwo 0.2s 2.8s forwards;
+    -moz-animation: circleTwo 0.2s 2.8s forwards;  
+    -webkit-animation: circleTwo 0.2s 2.8s forwards;   
+    -o-animation: circleTwo 0.2s 2.8s forwards;
+}
+.section2.active .function2 .circle2{ 
+    animation: circleTwo 0.2s 4.5s forwards;
+    -moz-animation: circleTwo 0.2s 4.5s forwards;  
+    -webkit-animation: circleTwo 0.2s 4.5s forwards;   
+    -o-animation: circleTwo 0.2s 4.5s forwards;
+}
+.section2.active .function4 .circle2{ 
+    animation: circleTwo 0.2s 6.1s forwards;
+    -moz-animation: circleTwo 0.2s 6.1s forwards;  
+    -webkit-animation: circleTwo 0.2s 6.1s forwards;   
+    -o-animation: circleTwo 0.2s 6.1s forwards;
+}
+.section2.active .function3 .circle2{ 
+    animation: circleTwo 0.2s 7.7s forwards;
+    -moz-animation: circleTwo 0.2s 7.7s forwards;  
+    -webkit-animation: circleTwo 0.2s 7.7s forwards;   
+    -o-animation: circleTwo 0.2s 7.7s forwards;
+}
+@keyframes circleTwo{
+    from{opacity: 0;transform:scale(0)}
+    to{width:15px;height:15px;opacity: 1;transform:scale(1)}
+}
+@-webkit-keyframes circleTwo{
+    from{opacity: 0;transform:scale(0)}
+    to{width:15px;height:15px;opacity: 1;transform:scale(1)}
+}
+@-moz-keyframes circleTwo{
+    from{opacity: 0;transform:scale(0)}
+    to{width:15px;height:15px;opacity: 1;transform:scale(1)}
+}
+@-o-keyframes circleTwo{
+    from{opacity: 0;transform:scale(0)}
+    to{width:15px;height:15px;opacity: 1;transform:scale(1)}
+}
+.section2.active .function1 .line2{ 
+    animation: lineTwo 0.2s 3.1s forwards;
+    -moz-animation: lineTwo 0.2s 3.1s forwards;  
+    -webkit-animation: lineTwo 0.2s 3.1s forwards;   
+    -o-animation: lineTwo 0.2s 3.1s forwards;
+}
+.section2.active .function2 .line2{ 
+    animation: lineTwo 0.2s 4.8s forwards;
+    -moz-animation: lineTwo 0.2s 4.8s forwards;  
+    -webkit-animation: lineTwo 0.2s 4.8s forwards;   
+    -o-animation: lineTwo 0.2s 4.8s forwards;
+}
+@keyframes lineTwo{
+    from{height: 0;}
+    to{height:120px;}
+}
+@-webkit-keyframes lineTwo{
+    from{height: 0;}
+    to{height:120px;}
+}
+@-moz-keyframes lineTwo{
+    from{height: 0;}
+    to{height:120px;}
+}
+@-o-keyframes lineTwo{
+    from{height: 0;}
+    to{height:120px;}
+}
+.section2.active .function1 .function-con{ 
+    animation: functionIconOne 0.3s ease-out 3.4s forwards;
+    -moz-animation: functionIconOne 0.3s ease-out 3.4s forwards;  
+    -webkit-animation: functionIconOne 0.3s ease-out 3.4s forwards;   
+    -o-animation: functionIconOne 0.3s ease-out 3.4s forwards;
+}
+.section2.active .function3 .function-con{ 
+    animation: functionIconOne 0.3s ease-out 8.3s forwards;
+    -moz-animation: functionIconOne 0.3s ease-out 8.3s forwards;  
+    -webkit-animation: functionIconOne 0.3s ease-out 8.3s forwards;   
+    -o-animation: functionIconOne 0.3s ease-out 8.3s forwards;
+}
+@keyframes functionIconOne{
+    from{right: 100%;}
+    to{right: 267px;opacity: 1}
+}
+@-webkit-keyframes functionIconOne{
+    from{right: 100%;}
+    to{right: 267px;opacity: 1}
+}
+@-moz-keyframes functionIconOne{
+    from{right: 100%;}
+    to{right: 267px;opacity: 1}
+}
+@-o-keyframes functionIconOne{
+    from{right: 100%;}
+    to{right: 267px;opacity: 1}
+}
+.section2.active .function2 .function-con{ 
+    animation: functionIconTwo 0.3s ease-out 5.1s forwards;
+    -moz-animation: functionIconTwo 0.3s ease-out 5.1s forwards;  
+    -webkit-animation: functionIconTwo 0.3s ease-out 5.1s forwards;   
+    -o-animation: functionIconTwo 0.3s ease-out 5.1s forwards;
+}
+.section2.active .function4 .function-con{ 
+    animation: functionIconTwo 0.3s ease-out 6.7s forwards;
+    -moz-animation: functionIconTwo 0.3s ease-out 6.7s forwards;  
+    -webkit-animation: functionIconTwo 0.3s ease-out 6.7s forwards;   
+    -o-animation: functionIconTwo 0.3s ease-out 6.7s forwards;
+}
+@keyframes functionIconTwo{
+    from{left: 100%;}
+    to{left: 267px;opacity: 1}
+}
+@-webkit-keyframes functionIconTwo{
+    from{left: 100%;}
+    to{left: 267px;opacity: 1}
+}
+@-moz-keyframes functionIconTwo{
+    from{left: 100%;}
+    to{left: 267px;opacity: 1}
+}
+@-o-keyframes functionIconTwo{
+    from{left: 100%;}
+    to{left: 267px;opacity: 1}
+}
+.section2.active .function4 .line1{ 
+    animation: lineOne-2 0.2s 5.8s forwards;
+    -moz-animation: lineOne-2 0.2s 5.8s forwards;  
+    -webkit-animation: lineOne-2 0.2s 5.8s forwards;   
+    -o-animation: lineOne-2 0.2s 5.8s forwards;
+}
+@keyframes lineOne-2{
+    from{width: 0;}
+    to{width:155px;}
+}
+@-webkit-keyframes lineOne-2{
+    from{width: 0;}
+    to{width:155px;}
+}
+@-moz-keyframes lineOne-2{
+    from{width: 0;}
+    to{width:155px;}
+}
+@-o-keyframes lineOne-2{
+    from{width: 0;}
+    to{width:155px;}
+}
+.section2.active .function4 .line2{ 
+    animation: lineTwo-2 0.2s 6.4s forwards;
+    -moz-animation: lineTwo-2 0.2s 6.4s forwards;  
+    -webkit-animation: lineTwo-2 0.2s 6.4s forwards;   
+    -o-animation: lineTwo-2 0.2s 6.4s forwards;
+} 
+.section2.active .function3 .line2{ 
+    animation: lineTwo-2 0.2s 8s forwards;
+    -moz-animation: lineTwo-2 0.2s 8s forwards;  
+    -webkit-animation: lineTwo-2 0.2s 8s forwards;   
+    -o-animation: lineTwo-2 0.2s 8s forwards;
+}
+@keyframes lineTwo-2{
+    from{height: 0;}
+    to{height:51px;}
+}
+@-webkit-keyframes lineTwo-2{
+    from{height: 0;}
+    to{height:51px;}
+}
+@-moz-keyframes lineTwo-2{
+    from{height: 0;}
+    to{height:51px;}
+}
+@-o-keyframes lineTwo-2{
+    from{height: 0;}
+    to{height:51px;}
+}
+.section2.active .function3 .line1{ 
+    animation: lineOne-3 0.2s 7.4s forwards;
+    -moz-animation: lineOne-3 0.2s 7.4s forwards;  
+    -webkit-animation: lineOne-3 0.2s 7.4s forwards;   
+    -o-animation: lineOne-3 0.2s 7.4s forwards;
+}
+@keyframes lineOne-3{
+    from{width: 0;}
+    to{width:263px;}
+}
+@-webkit-keyframes lineOne-3{
+    from{width: 0;}
+    to{width:263px;}
+}
+@-moz-keyframes lineOne-3{
+    from{width: 0;}
+    to{width:263px;}
+}
+@-o-keyframes lineOne-3{
+    from{width: 0;}
+    to{width:263px;}
+}
+ 
+
+/*section2中点和线的出现结束*/
+
+/*二屏的css3动效结束*/
+
+/*官网第二屏结束*/
+
+/*官网第三屏开始*/
+.section3-c{width: 1100px;height: 100vh;margin:0 auto;}
+.section3-c-con{position: relative;height: 1000px;width: 1100px;}
+#carousel{width:870px;height:450px;margin:0px auto;padding:0px;list-style:none;padding:0px;position: relative;z-index: 2}
+#carousel li{float:left}
+.line-arrow{width: 100%;position: absolute;top:50%; z-index: 3}
+.line-arrow img{width: 100%;}
+.line-arrow1{    width: 1096px; position: absolute; top: 448px; z-index: 1; left: 2px; } 
+.line-arrow1 img{width: 100%;}
+ 
+/*官网第四屏结束*/
+.section4-c{width: 1100px;height: 100vh;margin:0 auto;}
+.sec4-c-con{width: 1100px;height: 665px;position: relative;}
+.sec4-c-con img{position: absolute;}
+/*section4的app图*/
+.sec4-1-app{width: 473px;bottom: 0px;left: 24px;opacity: 0;}
+.sec4-2-app{width: 440px;bottom: 60px;left: 360px;opacity: 0;}
+.sec4-3-app{width: 443px;left: 40px;bottom: 253px;opacity: 0;}
+.sec4-4-app{width: 440px;bottom: 220px;left: 574px;opacity: 0;}
+.sec4-5-app{width: 443px;bottom: 415px;left: 225px;opacity: 0;}
+.sec4-6-app{width: 473px;bottom: 420px;left: 630px;opacity: 0;}
+/*section4的线条*/
+.sec4-1-line{position:absolute; width: 0px;height:102px; bottom: 177px;left: 40px; background: url(images/sec4-1-line.png) no-repeat;background-position: left top; background-size: 95px 102px;}
+.sec4-2-line{position:absolute;width:0px;height: 152px;bottom: 127px;left: 230px;background: url(images/sec4-2-line.png) no-repeat;background-position: left top; background-size: 278px 152px;}
+.sec4-3-line{position:absolute;width: 0px;height: 151px;bottom: 412px;left: 230px;background: url(images/sec4-3-line.png) no-repeat;background-position: left top; background-size: 277px 151px;}
+.sec4-4-line{position:absolute;width: 0px;height: 116px;bottom: 325px;left: 400px;background: url(images/sec4-4-line.png) no-repeat;background-position: left top; background-size: 358px 116px;}
+.sec4-5-line{position:absolute;width: 0px;height: 153px;bottom: 498px;left: 564px;background: url(images/sec4-5-line.png) no-repeat;background-position: left top; background-size: 281px 153px;}
+.sec4-6-line{position:absolute;width:0px;height: 97px;bottom: 547px;left: 950px;background: url(images/sec4-6-line.png) no-repeat;background-position: left top; background-size: 93px 97px;}
+ 
+.section4.active .sec4-1-line{
+    animation: sec4Line1 0.4s 1.5s forwards;
+    -moz-animation: sec4Line1 0.4s 1.5s forwards;  
+    -webkit-animation: sec4Line1 0.4s 1.5s forwards;   
+    -o-animation: sec4Line1 0.4s 1.5s forwards;
+}
+@keyframes sec4Line1{
+    from{width: 0;}
+    to{width: 95px;}
+}
+@-webkit-keyframes sec4Line1{
+    from{width: 0;}
+    to{width: 95px;}
+}
+@-moz-keyframes sec4Line1{
+    from{width: 0;}
+    to{width: 95px;}
+}
+@-o-keyframes sec4Line1{
+    from{width: 0;}
+    to{width: 95px;}
+}
+.section4.active .sec4-1-app{
+    animation: sec4App 0.4s 1.9s forwards;
+    -moz-animation: sec4App 0.4s 1.9s forwards;  
+    -webkit-animation: sec4App 0.4s 1.9s forwards;   
+    -o-animation: sec4App 0.4s 1.9s forwards;
+}
+.section4.active .sec4-2-app{
+    animation: sec4App 0.4s 2.7s forwards;
+    -moz-animation: sec4App 0.4s 2.7s forwards;  
+    -webkit-animation: sec4App 0.4s 2.7s forwards;   
+    -o-animation: sec4App 0.4s 2.7s forwards;
+}
+.section4.active .sec4-3-app{
+    animation: sec4App 0.4s 3.1s forwards;
+    -moz-animation: sec4App 0.4s 3.1s forwards;  
+    -webkit-animation: sec4App 0.4s 3.1s forwards;   
+    -o-animation: sec4App 0.4s 3.1s forwards;
+}
+.section4.active .sec4-4-app{
+    animation: sec4App 0.4s 3.9s forwards;
+    -moz-animation: sec4App 0.4s 3.9s forwards;  
+    -webkit-animation: sec4App 0.4s 3.9s forwards;   
+    -o-animation: sec4App 0.4s 3.9s forwards;
+}
+.section4.active .sec4-5-app{
+    animation: sec4App 0.4s 3.9s forwards;
+    -moz-animation: sec4App 0.4s 3.9s forwards;  
+    -webkit-animation: sec4App 0.4s 3.9s forwards;   
+    -o-animation: sec4App 0.4s 3.9s forwards;
+}
+.section4.active .sec4-6-app{
+    animation: sec4App 0.4s 4.7s forwards;
+    -moz-animation: sec4App 0.4s 4.7s forwards;  
+    -webkit-animation: sec4App 0.4s 4.7s forwards;   
+    -o-animation: sec4App 0.4s 4.7s forwards;
+}
+@keyframes sec4App{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-webkit-keyframes sec4App{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-moz-keyframes sec4App{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-o-keyframes sec4App{
+    from{opacity: 0;}
+    to{opacity: 1}
+} 
+.section4.active .sec4-2-line{
+    animation: sec4Line2 0.4s 2.3s forwards;
+    -moz-animation: sec4Line2 0.4s 2.3s forwards;  
+    -webkit-animation: sec4Line2 0.4s 2.3s forwards;   
+    -o-animation: sec4Line2 0.4s 2.3s forwards;
+}
+@keyframes sec4Line2{
+    from{width: 0;}
+    to{width: 278px;}
+}
+@-webkit-keyframes sec4Line2{
+    from{width: 0;}
+    to{width: 278px;}
+}
+@-moz-keyframes sec4Line2{
+    from{width: 0;}
+    to{width: 278px;}
+}
+@-o-keyframes sec4Line2{
+    from{width: 0;}
+    to{width: 278px;}
+}
+
+.section4.active .sec4-3-line{
+    animation: sec4Line3 0.4s 3.5s forwards;
+    -moz-animation: sec4Line3 0.4s 3.5s forwards;  
+    -webkit-animation: sec4Line3 0.4s 3.5s forwards;   
+    -o-animation: sec4Line3 0.4s 3.5s forwards;
+} 
+@keyframes sec4Line3{
+    from{width: 0;}
+    to{width: 277px;}
+}
+@-webkit-keyframes sec4Line3{
+    from{width: 0;}
+    to{width: 277px;}
+}
+@-moz-keyframes sec4Line3{
+    from{width: 0;}
+    to{width: 277px;}
+}
+@-o-keyframes sec4Line3{
+    from{width: 0;}
+    to{width: 277px;}
+}
+.section4.active .sec4-4-line{
+    animation: sec4Line4 0.4s 3.5s forwards;
+    -moz-animation: sec4Line4 0.4s 3.5s forwards;  
+    -webkit-animation: sec4Line4 0.4s 3.5s forwards;   
+    -o-animation: sec4Line4 0.4s 3.5s forwards;
+} 
+@keyframes sec4Line4{
+    from{width: 0;}
+    to{width: 358px;}
+}
+@-webkit-keyframes sec4Line4{
+    from{width: 0;}
+    to{width: 358px;}
+}
+@-moz-keyframes sec4Line4{
+    from{width: 0;}
+    to{width: 358px;}
+}
+@-o-keyframes sec4Line4{
+    from{width: 0;}
+    to{width: 358px;}
+}
+.section4.active .sec4-5-line{
+    animation: sec4Line5 0.4s 4.3s forwards;
+    -moz-animation: sec4Line5 0.4s 4.3s forwards;  
+    -webkit-animation: sec4Line5 0.4s 4.3s forwards;   
+    -o-animation: sec4Line5 0.4s 4.3s forwards;
+} 
+@keyframes sec4Line5{
+    from{width: 0;}
+    to{width: 281px;}
+}
+@-webkit-keyframes sec4Line5{
+    from{width: 0;}
+    to{width: 281px;}
+}
+@-moz-keyframes sec4Line5{
+    from{width: 0;}
+    to{width: 281px;}
+}
+@-o-keyframes sec4Line5{
+    from{width: 0;}
+    to{width: 281px;}
+}
+ .section4.active .sec4-6-line{
+    animation: sec4Line6 0.4s 4.7s forwards;
+    -moz-animation: sec4Line6 0.4s 4.7s forwards;  
+    -webkit-animation: sec4Line6 0.4s 4.7s forwards;   
+    -o-animation: sec4Line6 0.4s 4.7s forwards;
+} 
+@keyframes sec4Line6{
+    from{width: 0;}
+    to{width: 93px;}
+}
+@-webkit-keyframes sec4Line6{
+    from{width: 0;}
+    to{width: 93px;}
+}
+@-moz-keyframes sec4Line6{
+    from{width: 0;}
+    to{width: 93px;}
+}
+@-o-keyframes sec4Line6{
+    from{width: 0;}
+    to{width: 93px;}
+}
+
+
+
+ 
+
+
+
+
+/*官网第四屏开始*/
+
+/*官网第五屏结束*/
+.section5-c{width: 1100px;height: 100vh;margin:0 auto;}
+.sec5-c-con{height: 710px; position: relative;opacity: 0;margin-top: 18%;} 
+    /* 5屏轮播开始 */
+    .focusBox { width: 710px;height: 710px;margin:0 auto;}
+    .focusBox .pic{width: 250px;height: 710px;  position:relative; z-index:0;left:50%;top:50%;margin-left:-125px ;margin-top: -225px;  }
+    .focusBox .pic li{margin-top: -225px;}
+    .focusBox .pic img { width:250px; height:450px; display: block; }
+    .focusBox .hd {width: 710px; height: 710px; position: absolute;top:0px;  z-index: 1;/* background: url(images/sec5-clock.png) no-repeat;background-position: center center; background-size: auto 100%;  */}  
+    .focusBox .hd li{width: 50%;height: 50%;        }
+
+    .focusBox .hd li:first-child{float: left;background:url(images/hollow.png) no-repeat;background-position: 0 0;background-size:335px auto;transform: rotate(-90deg);
+-ms-transform: rotate(-90deg);        
+-webkit-transform: rotate(-90deg);   
+-o-transform: rotate(-90deg);        
+-moz-transform: rotate(-90deg);}
+    .focusBox .hd li:nth-child(2){float: left;background: url(images/hollow.png) no-repeat;background-position: 0 0;background-size:335px auto; }
+    .focusBox .hd li:last-child{float: left;background:url(images/hollow.png) no-repeat;background-size:335px auto;background-position: 0 0;transform: rotate(180deg);
+-ms-transform: rotate(180deg);        
+-webkit-transform: rotate(180deg);   
+-o-transform: rotate(180deg);        
+-moz-transform: rotate(180deg);}
+    .focusBox .hd li:nth-child(3){float: right;background:url(images/hollow.png) no-repeat;background-size:335px auto;background-position: 0 0;transform: rotate(90deg);
+-ms-transform: rotate(90deg);        
+-webkit-transform: rotate(90deg);   
+-o-transform: rotate(90deg);        
+-moz-transform: rotate(90deg);}
+ /*乱写部分*/
+    .focusBox .hd li div{width:0;height:0;  } 
+    .focusBox .hd li.on div{
+        width:100%;height:100%;background:url(images/solid.png) no-repeat;  background-position: 0 0;background-size:335px auto;
+ transition:width 3s, height 3s;
+-moz-transition:width 3s, height 3s, -moz-transform 3s;  
+-webkit-transition:width 3s, height 3s, -webkit-transform 3s;  
+-o-transition:width 3s, height 3s, -o-transform 3s;  }
+
+   
+    /* 5屏轮播结束 */
+
+ 
+
+
+/*5屏css3透明度变化开始*/
+.section5.active .sec5-c-con{ 
+    animation: sec5_in 1.8s 1.5s forwards;
+    -moz-animation: sec5_in 1.8s 1.5s forwards;  
+    -webkit-animation: sec5_in 1.8s 1.5s forwards;   
+    -o-animation: sec5_in 1.8s 1.5s forwards;
+}
+@keyframes sec5_in{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-webkit-keyframes sec5_in{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-moz-keyframes sec5_in{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-o-keyframes sec5_in{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+.sec_out{
+    animation: sec_out 0.8s;
+    -moz-animation: sec_out 0.8s;  
+    -webkit-animation: sec_out 0.8s;   
+    -o-animation: sec_out 0.8s;
+}
+@keyframes sec_out{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-webkit-keyframes sec_out{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-moz-keyframes sec_out{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+@-o-keyframes sec_out{
+    from{opacity: 0;}
+    to{opacity: 1}
+}
+/*5屏css3透明度变化结束*/
+
+/*官网第五屏开始*/
+
+/*官网第六屏结束*/
+.section6-c{width: 1100px; margin:0 auto;text-align: center;}
+.section6-c .music-sign{height:33vh;padding-top: 10vh;}
+.sec6-con{line-height: 50px;font-size: 26px; color: #333; }
+.code img{height: 24vh;padding:15px 0px;}
+.copyright{font-size: 17px;}
+.friend_link a{color: #333;font-size: 20px;}
+.friend_link a:hover{text-decoration: underline;}
+/*官网第六屏开始*/
+
+.section2 *,.section3 *,.section4 *,.section5 *{opacity: 1\0 !important;}
+
+/*首页nav*/
+#menu { background:rgba(42,53,97,0.7) url(images/nav_bg.png) no-repeat;background-position: 99px center;position: absolute; right: 0px; top: 22%; width: 148px; height:370px; z-index: 10 }
+#menu li { width:148px;text-align: center;position: relative;left: -17px }
+#menu li:first-child{padding-top: 67px;margin-bottom: 17px;}
+#menu a {  font-family: font4;font-size: 20px;  color: #fff;line-height: 45px;display: block;}
+#menu a:hover{color: #FFE03A;}
+#menu .active a { color: #FFE03A; background: url(images/nav_now.png) no-repeat;background-position:122px 12px}
+ #menu img{width: 69px;}
+/*首页nav*/ 

@@ -1,0 +1,82 @@
+
+.case2{background: #354595;color: #fff;}
+.case2 .case2-con{text-align: center;padding:0 10%;} 
+.case2-div{display: inline-block;margin:10px 60px 60px ;}
+.case2-line{width: 36px;height: 1px;background: #fff;margin:8px auto 3px; }
+.case2-chinese{font-size: 20px;}
+.case2-english{font-size: 14px;}
+
+.case2-num{font-size: 70px;margin-top: 20px;}
+.case2-num span{font-size: 90px;}
+
+.process{margin-top: 30px;} 
+.case-chinese-title{text-align: center; margin-top: 100px;}
+.case-chinese-title span{font-size: 24px;color: #fff;background: #1B1936;padding:6px 20px;}
+.case-english-title{text-align: center;line-height: 60px;color: #5E5E5E;font-size: 25px;margin-bottom: 50px;}
+.case4{background: #F8FCFE;}
+.case4-nav{padding-left: 10%;position: relative;top:-46px;}
+.case4-nav li{float: left;height: 46px;width:233px;text-align: center;font-size: 24px;font-weight: bold;  line-height: 46px;color: #354595;cursor: pointer;}
+.case4-nav li.case4-nav-now{background: #354595;color: #fff;}
+
+.case4-list{color: #fff;clear:both;position: relative;}
+
+.case4-list-l{float: left;width: 50%;background: #FEFEFE}
+.case4-list-r{float: left;width:50%;background: #354595}
+.case4-list-tit{margin:15% 0 5% 0; text-align: center;line-height: 46px;font-size: 22px;}
+.case4-list-tit span{border:1px solid #fff;padding:10px 80px;}
+.case4-list-p1{font-size: 17px;line-height: 33px;position: relative;}
+.case4-list-p1:before,.case4-list-p1:after{content: "";position: absolute; width:25px;height:25px;display:block; }
+.case4-list-p1:before{left: -36px;top: 0px; background: url(../img/quote-left.png) no-repeat;background-size:100% auto; }
+.case4-list-p1:after{right: -23px;bottom: -15px;background: url(../img/quote-right.png) no-repeat;background-size:100% auto;}
+.case4-con{width:50%; position: relative;left: 40%;} 
+.case4-list:nth-child(even) .case4-con{left:10%}
+.case-link{text-align: center;margin-bottom: 28%;margin-top: 15%; }
+
+.case4-con a{padding:4px 50px;background: #fff;border-radius: 20px;border:3px solid #E4E7F2;color: #354595;font-weight: bold;letter-spacing: 2px;}
+ 
+.show-img{position: absolute;left: 50%;  z-index: 10}
+.case4-web{display: none}
+.case4-app .case4-list:first-child .case4-list-l{background: url(../img/app-bg1.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(2) .case4-list-l{background: url(../img/app-bg2.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(3) .case4-list-l{background: url(../img/app-bg3.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(4) .case4-list-l{background: url(../img/app-bg4.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(5) .case4-list-l{background: url(../img/app-bg5.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(6) .case4-list-l{background: url(../img/app-bg6.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:nth-child(7) .case4-list-l{background: url(../img/app-bg7.png) no-repeat;background-size: 100% 100%; }
+.case4-app .case4-list:last-child .case4-list-l{background: url(../img/app-bg8.png) no-repeat;background-size: 100% 100%; }
+.cuoti-div{font-size: 15px;margin-top: 40px;line-height: 28px;}
+
+
+
+
+@media screen and (max-width: 1200px) {
+     .case4-list-r{font-size: 14px;} 
+     .case4-list-tit span {padding: 2px 25px;font-size:14px; }
+     .case4-list-p1{font-size: 12px; line-height: 22px;}
+     .case4-list-tit{line-height: 30px; margin: 5%;}
+     .case-link {margin-bottom: 15%;    margin-top: 5%;} 
+     .case4-nav{padding-left: 0; }
+     .case4-nav li{width: 50%}
+     .case-chinese-title{margin-top: 50px}
+     .case-english-title{margin-bottom: 70px;}
+     .case2-div{margin:0 5px;}
+     .case2-num span{font-size: 45px;}
+     .case2-num{font-size: 49px;}
+     .process{/*transform:scale(0.6,0.6);
+          -webkit-transform:scale(0.6,0.6);
+          -moz-transform:scale(0.6,0.6);
+          -ms-transform:scale(0.6,0.6);
+          -o-transform:scale(0.6,0.6);*/
+          width: 60%;
+          margin-top:10px;}
+     .case4-con a{padding:3px 17px;}
+     .cuoti-div{font-size: 12px;}
+ }
+ @media screen and (max-width: 1000px) {
+     .case4-list-p1{font-size: 12px; line-height: 16px;}
+     .case4-con a{padding:1px 3px;letter-spacing: 0;font-size: 12px;}
+     .case4-list-tit span{padding:1px 4px;}
+     .cuoti-div{display: none}
+     .case4-list-p1 span{display: none}
+     .case4-list-tit{line-height: 18px;}
+ }
