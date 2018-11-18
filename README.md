@@ -40,7 +40,7 @@
     **/ 
     ```
 
-6. [为小晶晶做的照片瀑布流](https://geekfeier.github.io/demos/6LittleJing)
+6. [为小晶晶做的照片瀑布流(因为懒没有加loading。。。)](https://geekfeier.github.io/demos/6LittleJing)
 7. [剪切旋转特效](https://geekfeier.github.io/demos/7ClipPath)
 8. [下拉刷新上拉加载](https://geekfeier.github.io/demos/8IscorllPage)
 9. [为了粉丝 官网](https://geekfeier.github.io/demos/9Forfans)
