@@ -1,194 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+
+  <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Calendar</title>
     <link rel="stylesheet" href="css/date.css">
     <script src="jquery.3.2.1.min.js"></script>
-</head>
-<body>
-    <div id="canlendar">
-        <div class="canlendar-left">
-            <div class="canlendar-left-top">
-                <div class="month-prev"></div>
-                <div class="canlendar-today">
-                    <span id="year-here" class="year-table"></span>年
-                    <span id="month-here" class="month-table"></span>月</div>
-                <div class="month-next"></div>
-            </div>
-            <table cellspacing='0' class="date-table">
-                <thead>
-                    <tr>
-                        <th>日</th>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                    </tr>
-                </thead>
-                <tbody>
+  </head>
 
-                </tbody>
-            </table>
+  <body>
+    <div id="canlendar">
+      <div class="canlendar-left">
+        <div class="canlendar-left-top">
+          <div class="month-prev"></div>
+          <div class="canlendar-today">
+            <span id="year-here" class="year-table"></span> -
+            <span id="month-here" class="month-table"></span>
+          </div>
+          <div class="month-next"></div>
         </div>
-        <div class="canlendar-right reserve-info">
-            <div class="reserve-info-time">
-                <span class="year">0000</span>-<span class="month">00</span>-<span class="day">00</span>
-                <span class="week"></span>
-            </div>
-            <div class="reserve-info-day"></div>
-            <div class="reserve-info-part">
-                <div class="reserve-txt">已预约时间</div>
-                <div class="reserve-detail">
-                    <div>12:00~14:00</div>
-                    <div>12:00~14:00</div>
-                    <div>12:00~14:00</div>
-                    <div>12:00~14:00</div>
-                </div>
-                <!-- <div>- 暂无预约数据 -</div> -->
-            </div>
+        <table cellspacing='0' class="date-table">
+          <thead>
+            <tr>
+              <th>Sun</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="canlendar-right reserve-info">
+        <div class="reserve-info-time">
+          <span class="year">0000</span>-<span class="month">00</span>-<span class="day">00</span>
+          <span class="week"></span>
         </div>
+        <div class="reserve-info-day"></div>
+        <div class="reserve-info-part">
+          <div class="reserve-txt">Today is a beautiful day</div>
+          <div class="reserve-detail">
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+            <div>Happiness ❤</div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
+
 </html>
 <script>
-    var today = new Date(),
-        y = today.getFullYear(),
-        m = today.getMonth(),
-        d = today.getDate();
-    var newY = y,
-        newM = m,
-        newD = d;
+  var today = new Date(),
+    y = today.getFullYear(),
+    m = today.getMonth(),
+    d = today.getDate();
+  var newY = y,
+    newM = m,
+    newD = d;
 
-    newDate(today, newY, newM, newD); //初始化当月日历 
-    
-    drawDateDetail(newY, newM + 1, newD);
-    var time = newY + '-' + newM + '-' + newD;
-    // findResourceTime(this, time);//仪器预约已使用时间段 （默认今天）
+  newDate(today, newY, newM, newD); // Initialize the calendar for the current month
 
-    $('body').on('click', '.month-prev', function(event) {
-        newM--;
-        if (newM + 1 == 0) {
-            newM = 11;
-            newY--;
-        }
-        newDate(today, newY, newM, newD);  //渲染上月日历 
-    });
-    $('body').on('click', '.month-next', function(event) {
-        newM++;
-        if (newM + 1 == 13) {
-            newM = 0;
-            newY++;
-        }
-        newDate(today, newY, newM, newD);  //渲染下月日历 
-    });
+  drawDateDetail(newY, newM + 1, newD);
+  var time = newY + '-' + newM + '-' + newD;
+  // findResourceTime(this, time); // Find the reserved time slots for instruments (default today)
 
-    //查看预约时间  
-    $('body').on('click', '.date-table tbody td span:not([class^=disable])', function() {
-        // loading();
-        $(this).addClass('reserve-day')
-            .parent('td').siblings().find('span').removeClass('reserve-day')
-            .parents('tr').siblings().find('span').removeClass('reserve-day');
-        /**
-         * 格式化日期，如果月份、日期位数为1，则前边补0
-         */
-        function dateFormat(dateVal) {
-            if (dateVal.length === 1) return "0" + "" + dateVal;
-            return dateVal;
-        }
-        var year = Number($('#year-here').text()),
-            month = Number($('#month-here').text()),
-            day = Number($(this).text()),
-            yearFormat = $('#year-here').text(),
-            monthFormat = dateFormat(month.toString()),
-            dayFormat = dateFormat(day.toString());
-        drawDateDetail(year, month, day); //右边详细信息
-        //查看预约仪器的时间
-        var time = [yearFormat, monthFormat, dayFormat].join('-');
-        // findResourceTime(_this, time);//仪器预约已使用时间段 （点击的时间）
-    });
-
-
-    /**
-     * 
-     * @param {年} y 
-     * @param {月} m 
-     * @param {日} d 
-     * 返回日历右部的详细信息
-     */
-    function drawDateDetail(y, m, d){
-      $('.year').text(y);
-      $('.month').text(m);
-      $('.day').text(d);                 
-      $('.reserve-info-day').text(d)
-
-      $('.week').text(function(){
-        var week = new Date(y,m-1,d).getDay();//用new的时候 月份要在实际月份上-1
-        var weekObj = [
-          '星期日','星期一','星期二','星期三','星期四','星期五','星期六',
-        ];
-        for (var attr in weekObj) {  
-          if(attr == week){
-            return weekObj[attr];
-            break
-          }
-        }
-      });
+  $('body').on('click', '.month-prev', function (event) {
+    newM--;
+    if (newM + 1 == 0) {
+      newM = 11;
+      newY--;
     }
+    newDate(today, newY, newM, newD);  // Render the calendar for the previous month
+  });
+  $('body').on('click', '.month-next', function (event) {
+    newM++;
+    if (newM + 1 == 13) {
+      newM = 0;
+      newY++;
+    }
+    newDate(today, newY, newM, newD);  // Render the calendar for the next month
+  });
 
+  // View reservation time  
+  $('body').on('click', '.date-table tbody td span:not([class^=disable])', function () {
+    // loading();
+    $(this).addClass('reserve-day')
+      .parent('td').siblings().find('span').removeClass('reserve-day')
+      .parents('tr').siblings().find('span').removeClass('reserve-day');
     /**
-     * @param {今天} today 
-     * @param {年} y 
-     * @param {月} m 
-     * @param {日} d 
-     * 画左边日历表格
+     * Format the date, if the month or day is a single digit, prepend with 0
      */
-    function newDate(today, y, m, d) {
-      /**
-       * [isLeap 是否为闰年]
-       * @YXY
-       * @DateTime 2017-08-22T15:23:44+0800 
-       */
-      function isLeap(year) {
-        return year % 4 === 0 ? (year % 100 !== 0 ? 1 : (year % 400 === 0 ? 1 : 0)) : 0;
+    function dateFormat(dateVal) {
+      if (dateVal.length === 1) return "0" + "" + dateVal;
+      return dateVal;
+    }
+    var year = Number($('#year-here').text()),
+      month = Number($('#month-here').text()),
+      day = Number($(this).text()),
+      yearFormat = $('#year-here').text(),
+      monthFormat = dateFormat(month.toString()),
+      dayFormat = dateFormat(day.toString());
+    drawDateDetail(year, month, day); // Detailed information on the right side
+    // View the reservation time for instruments
+    var time = [yearFormat, monthFormat, dayFormat].join('-');
+    // findResourceTime(_this, time); // Time
+  });
+
+
+  /**
+   * 
+    @param {Year} y
+    @param {Month} m
+    @param {Day} d
+   */
+  function drawDateDetail(y, m, d) {
+    $('.year').text(y);
+    $('.month').text(m);
+    $('.day').text(d);
+    $('.reserve-info-day').text(d)
+
+    $('.week').text(function () {
+      var week = new Date(y, m - 1, d).getDay();
+      var weekObj = [
+        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+      ];
+      for (var attr in weekObj) {
+        if (attr == week) {
+          return weekObj[attr];
+          break
+        }
       }
-      var canlendarF = function (today, y, m, d) {
-        var firstday = new Date(y, m, 1), //获取当月的第一天
-          dayOfWeek = firstday.getDay(), //判断第一天是星期几(返回[0-6]中的一个，0代表星期天，1代表星期一，以此类推)
-          now = new Date(),
-          days_per_month = new Array(31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
-          str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7); //确定日期表格所需的行数 
-          $('.year-table').text(y);
-          $('.month-table').text(m + 1);
-        //二维数组创建日期表格 
-        var nextMonthFirstDay = 1, //下一个月的第一天 
-          prevMonthLastDay = m == 0 ? days_per_month[11] : days_per_month[m - 1]; //上一个月的最后一天
-        $('#canlendar .date-table tbody').html('')
-        for (var i = 0; i < str_nums; i += 1) {
-          $('#canlendar .date-table tbody').append('<tr></tr>');
-          for (var k = 0; k < 7; k++) {
-            var index = 7 * i + k; //为每个表格创建索引,从0开始
-            var date = index - dayOfWeek + 1; //将当月的1号与星期进行匹配
-            if (date <= 0) { //上月
-              date = prevMonthLastDay + date;
-              $('.date-table tbody tr:last-child').append('<td><span class="disable-day">' + date + '</span></td>');
-            } else if (date > days_per_month[m]) { //下月
-              date = nextMonthFirstDay++;
-              $('.date-table tbody tr:last-child').append('<td><span class="disable-day">' + date + '</span></td>');
-            } else { //当月 
-              if (date == d && y == now.getFullYear() && m == now.getMonth()) { //当天
-                $('.date-table tbody tr:last-child').append('<td><span class="today">' + date + '</span></td>');
-              } else {
-                $('.date-table tbody tr:last-child').append('<td><span>' + date + '</span></td>');
-              }
+    });
+  }
+
+  /**
+   * Draws the calendar table on the left side
+   */
+  function newDate(today, y, m, d) {
+    /**
+     * [isLeap Determines if it is a leap year]
+     * @YXY
+     * @DateTime 2017-08-22T15:23:44+0800 
+     */
+    function isLeap(year) {
+      return year % 4 === 0 ? (year % 100 !== 0 ? 1 : (year % 400 === 0 ? 1 : 0)) : 0;
+    }
+    var canlendarF = function (today, y, m, d) {
+      var firstday = new Date(y, m, 1), // Get the first day of the current month
+        dayOfWeek = firstday.getDay(), // Determine which day of the week the first day is (returns a value from [0-6], where 0 is Sunday and 1 is Monday, etc.)
+        now = new Date(),
+        days_per_month = new Array(31, 28 + isLeap(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
+        str_nums = Math.ceil((dayOfWeek + days_per_month[m]) / 7); // Determine the number of rows needed for the date table
+      $('.year-table').text(y);
+      $('.month-table').text(m + 1);
+      // Create a 2D array to build the date table
+      var nextMonthFirstDay = 1, // The first day of the next month
+        prevMonthLastDay = m == 0 ? days_per_month[11] : days_per_month[m - 1]; // The last day of the previous month
+      $('#canlendar .date-table tbody').html('');
+      for (var i = 0; i < str_nums; i += 1) {
+        $('#canlendar .date-table tbody').append('<tr></tr>');
+        for (var k = 0; k < 7; k++) {
+          var index = 7 * i + k; // Create an index for each cell starting from 0
+          var date = index - dayOfWeek + 1; // Align the 1st of the month with the day of the week
+          if (date <= 0) { // Previous month
+            date = prevMonthLastDay + date;
+            $('.date-table tbody tr:last-child').append('<td><span class="disable-day">' + date + '</span></td>');
+          } else if (date > days_per_month[m]) { // Next month
+            date = nextMonthFirstDay++;
+            $('.date-table tbody tr:last-child').append('<td><span class="disable-day">' + date + '</span></td>');
+          } else { // Current month
+            if (date == d && y == now.getFullYear() && m == now.getMonth()) { // Current day
+              $('.date-table tbody tr:last-child').append('<td><span class="today">' + date + '</span></td>');
+            } else {
+              $('.date-table tbody tr:last-child').append('<td><span>' + date + '</span></td>');
             }
           }
         }
-        $('.canlendar-right').height($('.canlendar-left').height())
       }
-      canlendarF(today, y, m, d);
+      $('.canlendar-right').height($('.canlendar-left').height());
     }
- 
+    canlendarF(today, y, m, d);
+  }
+
 </script>
