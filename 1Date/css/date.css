@@ -8,19 +8,23 @@
   width: 750px;
   border: 2px solid #005BAC;
   overflow: hidden;
+  margin: 100px auto;
 }
+
 #canlendar .canlendar-left {
   float: left;
   width: 460px;
   padding: 0 18px;
   line-height: 67px;
 }
+
 #canlendar .canlendar-left .canlendar-left-top .arrow {
   height: 67px;
   float: left;
   width: 40px;
   cursor: pointer;
 }
+
 #canlendar .canlendar-left .canlendar-left-top .month-prev {
   height: 67px;
   float: left;
@@ -28,6 +32,7 @@
   cursor: pointer;
   background: url('../img/arrow-left.png') no-repeat left center;
 }
+
 #canlendar .canlendar-left .canlendar-left-top .month-next {
   height: 67px;
   float: left;
@@ -35,6 +40,7 @@
   cursor: pointer;
   background: url('../img/arrow-right.png') no-repeat right center;
 }
+
 #canlendar .canlendar-left .canlendar-left-top .canlendar-today {
   float: left;
   width: 380px;
@@ -42,6 +48,7 @@
   color: #005BAC;
   font-size: 18px;
 }
+
 #canlendar .canlendar-left th,
 #canlendar .canlendar-left td {
   width: 65px;
@@ -50,24 +57,29 @@
   font-size: 17px;
   font-weight: normal;
 }
+
 #canlendar .canlendar-left td {
   cursor: pointer;
   line-height: 50px;
 }
+
 #canlendar .canlendar-left td span {
   display: block;
   width: 50px;
   height: 50px;
   margin: 9px 7px;
 }
+
 #canlendar .canlendar-left .today {
   background: #005BAC;
   border-radius: 50%;
   color: #fff;
 }
+
 #canlendar .canlendar-left .disable-day {
   color: #dad5d5;
 }
+
 #canlendar .canlendar-right {
   width: 254px;
   height: 100%;
@@ -76,38 +88,48 @@
   color: #fff;
   text-align: center;
 }
+
 #canlendar .canlendar-right .reserve-info-time {
   font-size: 20px;
   padding: 40px 0;
 }
+
 #canlendar .canlendar-right .reserve-info-time .week {
   margin-left: 10px;
 }
+
 #canlendar .canlendar-right .reserve-info-day {
   font-size: 82px;
   padding-bottom: 10px;
   border-bottom: 1px solid #BBD3E9;
   margin: 0 55px;
 }
+
 #canlendar .canlendar-right .reserve-info-part {
-  padding: 0 23px ;
+  padding: 0 23px;
   text-align: left;
 }
+
 #canlendar .canlendar-right .reserve-info-part .reserve-txt {
   font-size: 19px;
   line-height: 63px;
   margin-top: 10px;
+  white-space: nowrap;
 }
+
 #canlendar .canlendar-right .reserve-info-part .reserve-detail {
   font-size: 16px;
   line-height: 32px;
 }
+
 #canlendar .canlendar-right .reserve-info-part .reserve-detail div:nth-child(odd) {
   float: left;
 }
+
 #canlendar .canlendar-right .reserve-info-part .reserve-detail div:nth-child(even) {
   float: right;
 }
+
 .reserve-day {
   background: #8abae4;
   border-radius: 50%;
